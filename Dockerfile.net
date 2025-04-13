@@ -19,6 +19,12 @@ RUN dotnet publish -c Release -o /app/publish
 # Etapa final
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
+
+# Copia os arquivos publicados
 COPY --from=build /app/publish .
+
+# Copia também o código-fonte para /src
+COPY --from=build /src /src
+
 ENTRYPOINT ["dotnet", "SistemaVendas.dll"]
 
