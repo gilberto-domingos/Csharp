@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copia apenas o .csproj primeiro
+# Copia apenas o .csproj primeiro 
 COPY ["csharp/ApiRestFull/SistemaVendas/SistemaVendas.csproj", "SistemaVendas/"]
 
 # Restaura dependências
