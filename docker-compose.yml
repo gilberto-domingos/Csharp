@@ -14,8 +14,9 @@ services:
     env_file:
       - .env
     environment:
-      - ConnectionStrings__DefaultConnection=${CONNECTION_STRING}
-      - RABBITMQ_HOST=${RABBITMQ_HOST}
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: ${CONNECTION_STRING}
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
 
   cs.react:
     container_name: cs.react
@@ -38,7 +39,8 @@ services:
       - .env
     environment:
       SA_PASSWORD: ${SA_PASSWORD}
-      ACCEPT_EULA: "Y"
+      ACCEPT_EULA: Y
+      MSSQL_PID: Developer
     networks:
       - app_network
     volumes:
