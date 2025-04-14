@@ -26,5 +26,7 @@ COPY --from=build /app/publish .
 # Copia também o código-fonte para /src
 COPY --from=build /src /src
 
+EXPOSE 5000
+
 ENTRYPOINT ["dotnet", "SistemaVendas.dll"]
 
