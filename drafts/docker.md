@@ -1,4 +1,4 @@
-# Rascunho de comandos docker e verificações
+# Rascunho de comandos docker, verificações e testes
 
 ╰─ docker exec -it cs.net /bin/bash                                                                      
 echo $ASPNETCORE_ENVIRONMENT
@@ -8,6 +8,11 @@ docker network connect app_network cs.sql
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cs.sql
 
 docker network connect app_network cs.sql
+
+docker run -d --name cs.net \
+  -v $(pwd)/SistemaVendas:/app \
+  -p 5000:5000 curso-senac-cs.net
+
 
 docker exec -it cs.sql /bin/bash
 echo $DB_SERVER
@@ -43,6 +48,8 @@ docker-compose down
 docker-compose up -d --build 
 docker-compose up -d
 docker-compose up -d --build cs.net
+
+docker run -d --name cs.net -p 5000:5000 curso-senac-cs.net
 
 
 docker run -e 'ACCEPT_EULA=Y' -e "SA_PASSWORD=$SA_PASSWORD" -p 1433:1433 --name cs.sql -d mcr.microsoft.com/mssql/server:2022-latest
