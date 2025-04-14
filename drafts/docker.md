@@ -1,4 +1,4 @@
-# Rascunho de comandos docker e verificações
+# Rascunho de comandos docker, verificações e testes
 
 ╰─ docker exec -it cs.net /bin/bash                                                                      
 echo $ASPNETCORE_ENVIRONMENT
