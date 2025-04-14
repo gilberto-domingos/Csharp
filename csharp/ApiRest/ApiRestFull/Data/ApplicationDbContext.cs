@@ -9,5 +9,6 @@ public class ApiDbContext : DbContext
     {
     }
 
-    public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Autor> Autores { get; set; }
+    public DbSet<Livro> Livros { get; set; }
 }
