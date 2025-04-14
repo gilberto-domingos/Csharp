@@ -5,7 +5,7 @@ using SistemaVendas.Entities;
 namespace SistemaVendas.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class TesteController : ControllerBase
 {
     private readonly ApiDbContext _context;
@@ -16,15 +16,8 @@ public class TesteController : ControllerBase
     }
 
     [HttpPost("add")]
-    public IActionResult AddProduto()
+    public IActionResult AddProduto([FromBody] Produto novoProduto)
     {
-        var novoProduto = new Produto
-        {
-            Id = 01,
-            Nome = "Produto Teste",
-            Preco = 99.99M
-        };
-
         _context.Produtos.Add(novoProduto);
         _context.SaveChanges();
 
