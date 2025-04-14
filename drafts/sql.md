@@ -1,4 +1,4 @@
-# Rascunho de comandos SQLCMD
+# Rascunho de comandos : SqlServer cmd commands
 
 SELECT c.name AS ColumnName, t.name AS DataType
 FROM sys.columns c
