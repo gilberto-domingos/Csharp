@@ -10,9 +10,6 @@ namespace SistemaVendas.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Produtos");
-
             migrationBuilder.CreateTable(
                 name: "Autores",
                 columns: table => new
@@ -61,20 +58,6 @@ namespace SistemaVendas.Migrations
 
             migrationBuilder.DropTable(
                 name: "Autores");
-
-            migrationBuilder.CreateTable(
-                name: "Produtos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Produtos", x => x.Id);
-                });
         }
     }
 }

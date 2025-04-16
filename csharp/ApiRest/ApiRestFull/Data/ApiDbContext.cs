@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SistemaVendas.Entities;
+using SistemaVendas.Models;
 
 namespace SistemaVendas.Data;
 
