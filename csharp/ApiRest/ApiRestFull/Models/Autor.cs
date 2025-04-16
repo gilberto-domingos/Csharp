@@ -1,10 +1,11 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace SistemaVendas.Entities;
+namespace SistemaVendas.Models;
 
 public class Autor
 {
-    public int Id { get; set; }
+    [Key] public int IdAutor { get; set; }
 
     public string Nome { get; set; }
 
@@ -12,3 +13,4 @@ public class Autor
 
     [JsonIgnore] public ICollection<Livro> Livros { get; set; }
 }
+
