@@ -26,9 +26,16 @@
 - -> Testando entidades no DDD - As entidades no (Domain-Driven Design) são mais do que apenas classes elas encapsulam comportamento e regras de negócio que precisam ser validadas corretamente.
 - -> Testes Unitários com XUnit - framework de testes automatizados para projetos .NET C# mais usado no momento, desenvolver escrever, organizar e executar testes unitários no código.
 - ### ==> API RESTfull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
-- Desenvolvimento SistemaVendas (.Net + React + SqlServer + RabbitMq) e containerização Docker.
+- Desenvolvimento ApiRestFull (.Net + React + SqlServer + RabbitMq) e containerização Docker.
+- Organização de estrutura -> Models, Interfaces, Services, Controllers, DTOs, Data, DbContext, etc.
+- Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate 
+- SWAGGER - Configuração e teste de end-points na web envio requisições HTTP (GET, POST, PUT, DELETE) 
+- CRUD - Create, Read, Update, Delete
 - Dockerfiles, docker-compose.yml , configuração dos containers, teste de conexão e comunicação entre os containers.
-- Configuração do Migrations - CriandoBancoDados - InitialCreate.
+- Configuração de .env (variáveis de ambiente) - Portas, connection strings, secrets, etc.
+
+
+ 
 
 
 ----------------------------------------------------------------------------
