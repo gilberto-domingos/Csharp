@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using SistemaVendas.Services;
-using SistemaVendas.Entities;
+using ApiRestFull.Services;
+using ApiRestFull.Entities;
 
-namespace SistemaVendas.Controllers
+namespace ApiRestFull.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

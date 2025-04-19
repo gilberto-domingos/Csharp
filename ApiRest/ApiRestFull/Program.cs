@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using SistemaVendas.Data;
-using SistemaVendas.Interfaces;
-using SistemaVendas.Services;
+using ApiRestFull.Data;
+using ApiRestFull.Interfaces;
+using ApiRestFull.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

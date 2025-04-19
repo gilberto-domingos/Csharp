@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaVendas.Data;
+using ApiRestFull.Data;
 
 #nullable disable
 
-namespace SistemaVendas.Migrations
+namespace ApiRestFull.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
     [Migration("20250414174410_CriandoBancoDados")]
@@ -24,7 +24,7 @@ namespace SistemaVendas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SistemaVendas.Entities.Autor", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Autor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace SistemaVendas.Migrations
                     b.ToTable("Autores");
                 });
 
-            modelBuilder.Entity("SistemaVendas.Entities.Livro", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Livro", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,9 +67,9 @@ namespace SistemaVendas.Migrations
                     b.ToTable("Livros");
                 });
 
-            modelBuilder.Entity("SistemaVendas.Entities.Livro", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Livro", b =>
                 {
-                    b.HasOne("SistemaVendas.Entities.Autor", "Autor")
+                    b.HasOne("ApiRestFull.Entities.Autor", "Autor")
                         .WithMany("Livros")
                         .HasForeignKey("AutorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -78,7 +78,7 @@ namespace SistemaVendas.Migrations
                     b.Navigation("Autor");
                 });
 
-            modelBuilder.Entity("SistemaVendas.Entities.Autor", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Autor", b =>
                 {
                     b.Navigation("Livros");
                 });

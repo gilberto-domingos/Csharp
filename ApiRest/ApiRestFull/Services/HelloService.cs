@@ -1,6 +1,6 @@
-using SistemaVendas.Entities;
+using ApiRestFull.Entities;
 
-namespace SistemaVendas.Services
+namespace ApiRestFull.Services
 {
     public class HelloService
     {
