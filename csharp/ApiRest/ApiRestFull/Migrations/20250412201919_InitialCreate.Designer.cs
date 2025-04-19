@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaVendas.Data;
+using ApiRestFull.Data;
 
 #nullable disable
 
-namespace SistemaVendas.Migrations
+namespace ApiRestFull.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
     [Migration("20250412201919_InitialCreate")]
@@ -24,7 +24,7 @@ namespace SistemaVendas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SistemaVendas.Entities.Produto", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

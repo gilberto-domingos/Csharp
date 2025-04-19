@@ -1,6 +1,6 @@
-namespace SistemaVendas.DTOs;
+namespace ApiRestFull.DTOs;
 
-public class DtoResponse<T>
+public class RespostaApiDto<T>
 {
     public T? Dados { get; set; }
 

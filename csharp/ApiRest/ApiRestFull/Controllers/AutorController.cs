@@ -1,39 +1,64 @@
 using Microsoft.AspNetCore.Mvc;
-using SistemaVendas.DTOs;
-using SistemaVendas.Interfaces;
-using SistemaVendas.Models;
+using ApiRestFull.DTOs;
+using ApiRestFull.Interfaces;
+using ApiRestFull.Models;
 
-namespace SistemaVendas.Controllers;
+namespace ApiRestFull.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class AutorController : ControllerBase
 {
-    private readonly IAutor _autor;
+    private readonly IAutor _autorInterface;
 
     public AutorController(IAutor autorInterface)
     {
-        _autor = autorInterface;
+        _autorInterface = autorInterface;
     }
 
+
     [HttpGet("ListarAutores")]
-    public async Task<ActionResult<DtoResponse<List<Autor>>>> ListarAutores()
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ListarAutores()
     {
-        var autores = await _autor.ListarAutores();
+        var autores = await _autorInterface.ListarAutores();
         return Ok(autores);
     }
 
     [HttpGet("ListarAutorId/{IdAutor}")]
-    public async Task<ActionResult<DtoResponse<Autor>>> ListarAutorId(int IdAutor)
+    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(int IdAutor)
     {
-        var autor = await _autor.ListarAutorId(IdAutor);
+        var autor = await _autorInterface.ListarAutorId(IdAutor);
         return Ok(autor);
     }
 
     [HttpGet("ListarAutorPorIdLivro/{IdLivro}")]
-    public async Task<ActionResult<DtoResponse<Autor>>> ListarAutorPorIdLivro(int IdLivro)
+    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(int IdLivro)
     {
-        var autor = await _autor.ListarAutorPorIdLivro(IdLivro);
+        var autor = await _autorInterface.ListarAutorPorIdLivro(IdLivro);
         return Ok(autor);
     }
-    
-    
+
+    [HttpPost("CriarAutor")]
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> CriarAutor(AutorModelCriarDto autorModelCriarDto)
+    {
+        var autor = await _autorInterface.CriarAutor(autorModelCriarDto);
+        return Ok(autor);
+
+    }
+
+    [HttpPut("EditarAutor")]
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> EditarAutor(AutorEditarDto autorEditarDto)
+    {
+        var autor = await _autorInterface.EditarAutor(autorEditarDto);
+        return Ok(autor);
+    }
+
+    [HttpDelete("ExcluirAutor")]
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ExcluirAutor(int IdAutor)
+    {
+        var autor = await _autorInterface.ExcluirAutor(IdAutor);
+        return Ok(autor);
+    }
+
+
 }

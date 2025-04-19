@@ -1,4 +1,4 @@
-namespace SistemaVendas.Entities;
+namespace ApiRestFull.Entities;
 
 public class Hello
 {

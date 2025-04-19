@@ -11,8 +11,8 @@ using ApiRestFull.Data;
 namespace ApiRestFull.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20250416180907_AddPrimaryKeyToAutor")]
-    partial class AddPrimaryKeyToAutor
+    [Migration("20250418223053_NomeDaMigration")]
+    partial class NomeDaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace ApiRestFull.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ApiRestFull.Models.Autor", b =>
+            modelBuilder.Entity("ApiRestFull.Models.AutorModel", b =>
                 {
                     b.Property<int>("IdAutor")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace ApiRestFull.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdLivro"));
 
-                    b.Property<int>("AutorIdAutor")
+                    b.Property<int>("AutorModelIdAutor")
                         .HasColumnType("int");
 
                     b.Property<string>("Titulo")
@@ -62,23 +62,23 @@ namespace ApiRestFull.Migrations
 
                     b.HasKey("IdLivro");
 
-                    b.HasIndex("AutorIdAutor");
+                    b.HasIndex("AutorModelIdAutor");
 
                     b.ToTable("Livros");
                 });
 
             modelBuilder.Entity("ApiRestFull.Models.Livro", b =>
                 {
-                    b.HasOne("ApiRestFull.Models.Autor", "Autor")
+                    b.HasOne("ApiRestFull.Models.AutorModel", "AutorModel")
                         .WithMany("Livros")
-                        .HasForeignKey("AutorIdAutor")
+                        .HasForeignKey("AutorModelIdAutor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Autor");
+                    b.Navigation("AutorModel");
                 });
 
-            modelBuilder.Entity("ApiRestFull.Models.Autor", b =>
+            modelBuilder.Entity("ApiRestFull.Models.AutorModel", b =>
                 {
                     b.Navigation("Livros");
                 });

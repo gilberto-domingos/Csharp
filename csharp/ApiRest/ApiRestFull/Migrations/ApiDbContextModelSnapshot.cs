@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaVendas.Data;
+using ApiRestFull.Data;
 
 #nullable disable
 
-namespace SistemaVendas.Migrations
+namespace ApiRestFull.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
     partial class ApiDbContextModelSnapshot : ModelSnapshot
@@ -21,7 +21,7 @@ namespace SistemaVendas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SistemaVendas.Models.Autor", b =>
+            modelBuilder.Entity("ApiRestFull.Models.AutorModel", b =>
                 {
                     b.Property<int>("IdAutor")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace SistemaVendas.Migrations
                     b.ToTable("Autores");
                 });
 
-            modelBuilder.Entity("SistemaVendas.Models.Livro", b =>
+            modelBuilder.Entity("ApiRestFull.Models.Livro", b =>
                 {
                     b.Property<int>("IdLivro")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace SistemaVendas.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdLivro"));
 
-                    b.Property<int>("AutorIdAutor")
+                    b.Property<int>("AutorModelIdAutor")
                         .HasColumnType("int");
 
                     b.Property<string>("Titulo")
@@ -59,23 +59,23 @@ namespace SistemaVendas.Migrations
 
                     b.HasKey("IdLivro");
 
-                    b.HasIndex("AutorIdAutor");
+                    b.HasIndex("AutorModelIdAutor");
 
                     b.ToTable("Livros");
                 });
 
-            modelBuilder.Entity("SistemaVendas.Models.Livro", b =>
+            modelBuilder.Entity("ApiRestFull.Models.Livro", b =>
                 {
-                    b.HasOne("SistemaVendas.Models.Autor", "Autor")
+                    b.HasOne("ApiRestFull.Models.AutorModel", "AutorModel")
                         .WithMany("Livros")
-                        .HasForeignKey("AutorIdAutor")
+                        .HasForeignKey("AutorModelIdAutor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Autor");
+                    b.Navigation("AutorModel");
                 });
 
-            modelBuilder.Entity("SistemaVendas.Models.Autor", b =>
+            modelBuilder.Entity("ApiRestFull.Models.AutorModel", b =>
                 {
                     b.Navigation("Livros");
                 });

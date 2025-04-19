@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SistemaVendas.Migrations
+namespace ApiRestFull.Migrations
 {
     /// <inheritdoc />
     public partial class CriandoBancoDados : Migration
