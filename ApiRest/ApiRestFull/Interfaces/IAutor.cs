@@ -8,10 +8,10 @@ public interface IAutor
 
     Task<RespostaApiDto<List<AutorModel>>> ListarAutores();
     Task<RespostaApiDto<AutorModel>> ListarAutorId(int idAutor);
-    Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(int IdLivro);
-    Task<RespostaApiDto<List<AutorModel>>> CriarAutor(AutorModelCriarDto autorModelCriarDto);
+    Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(int idLivro);
+    Task<RespostaApiDto<List<AutorModel>>> CriarAutor(AutorCriarDto autorCriarDto);
     Task<RespostaApiDto<List<AutorModel>>> EditarAutor(AutorEditarDto autorEditarDto);
-    Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(int IAuAutor);
+    Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(int idAutor);
 
 
 

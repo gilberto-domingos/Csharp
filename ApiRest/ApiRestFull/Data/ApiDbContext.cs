@@ -13,9 +13,9 @@ namespace ApiRestFull.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LivroModel>()
-                .HasOne(l => l.AutorModel)
-                .WithMany(a => a.Livros)
-                .HasForeignKey(l => l.IdAutor)
+                .HasOne(livro => livro.Autor)
+                .WithMany(autor => autor.Livros)
+                .HasForeignKey(livro => livro.IdAutor)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<AutorModel>().HasData(
