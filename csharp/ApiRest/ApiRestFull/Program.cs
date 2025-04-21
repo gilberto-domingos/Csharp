@@ -19,8 +19,9 @@ builder.Configuration["ConnectionStrings:DefaultConnection"] = connectionString;
 
 builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
-builder.Services.AddScoped<HelloService>();
+
 builder.Services.AddScoped<IAutor, AutorService>();
+builder.Services.AddScoped<ILivro, LivroService>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();

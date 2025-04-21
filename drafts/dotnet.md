@@ -1,5 +1,9 @@
 # Rascunho de comandos .Net :
 
+rm -rf Migrations
+dotnet ef migrations add Initial
+dotnet ef database update
+
 dotnet ef migrations add SeedInicial
 dotnet ef database update
 

@@ -24,40 +24,40 @@ public class AutorController : ControllerBase
         return Ok(autores);
     }
 
-    [HttpGet("ListarAutorId/{IdAutor}")]
-    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(int IdAutor)
+    [HttpGet("ListarAutorId/{idAutor}")]
+    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(int idAutor)
     {
-        var autor = await _autorInterface.ListarAutorId(IdAutor);
+        var autor = await _autorInterface.ListarAutorId(idAutor);
         return Ok(autor);
     }
 
-    [HttpGet("ListarAutorPorIdLivro/{IdLivro}")]
-    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(int IdLivro)
+    [HttpGet("ListarAutorPorIdLivro/{idLivro}")]
+    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(int idLivro)
     {
-        var autor = await _autorInterface.ListarAutorPorIdLivro(IdLivro);
+        var autor = await _autorInterface.ListarAutorPorIdLivro(idLivro);
         return Ok(autor);
     }
 
     [HttpPost("CriarAutor")]
-    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> CriarAutor(AutorModelCriarDto autorModelCriarDto)
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> CriarAutor(AutorCriarDto autorCriarDto)
     {
-        var autor = await _autorInterface.CriarAutor(autorModelCriarDto);
-        return Ok(autor);
+        var autores = await _autorInterface.CriarAutor(autorCriarDto);
+        return Ok(autores);
 
     }
 
     [HttpPut("EditarAutor")]
     public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> EditarAutor(AutorEditarDto autorEditarDto)
     {
-        var autor = await _autorInterface.EditarAutor(autorEditarDto);
-        return Ok(autor);
+        var autores = await _autorInterface.EditarAutor(autorEditarDto);
+        return Ok(autores);
     }
 
     [HttpDelete("ExcluirAutor")]
-    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ExcluirAutor(int IdAutor)
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ExcluirAutor(int idAutor)
     {
-        var autor = await _autorInterface.ExcluirAutor(IdAutor);
-        return Ok(autor);
+        var autores = await _autorInterface.ExcluirAutor(idAutor);
+        return Ok(autores);
     }
 
 

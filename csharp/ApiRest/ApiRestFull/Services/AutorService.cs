@@ -17,7 +17,8 @@ public class AutorService : IAutor
 
     public async Task<RespostaApiDto<List<AutorModel>>> ListarAutores()
     {
-        RespostaApiDto<List<AutorModel>> resposta = new RespostaApiDto<List<AutorModel>>();
+        var resposta = new RespostaApiDto<List<AutorModel>>();
+
         try
         {
             var autores = await _context.Autores.ToListAsync();
@@ -28,49 +29,46 @@ public class AutorService : IAutor
         {
             resposta.Mensagem = ex.Message;
             resposta.Status = false;
-            return resposta;
         }
 
         return resposta;
     }
 
-    public async Task<RespostaApiDto<AutorModel>> ListarAutorId(int IdAutor)
+    public async Task<RespostaApiDto<AutorModel>> ListarAutorId(int idAutor)
     {
-        RespostaApiDto<AutorModel> resposta = new RespostaApiDto<AutorModel>();
+        var resposta = new RespostaApiDto<AutorModel>();
 
+        try
         {
-            try
+            var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == idAutor);
+
+            if (autor == null)
             {
-                var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == IdAutor);
-
-                if (autor == null)
-                {
-                    resposta.Mensagem = "Nenhum registro encontrado!";
-                    return resposta;
-                }
-
-                resposta.Dados = autor;
-                resposta.Mensagem = "Registro encontrado!";
+                resposta.Mensagem = "Nenhum registro encontrado!";
                 return resposta;
             }
-            catch (Exception ex)
-            {
-                resposta.Mensagem = ex.Message;
-                resposta.Status = false;
-                return resposta;
-            }
+
+            resposta.Dados = autor;
+            resposta.Mensagem = "Registro encontrado!";
         }
+        catch (Exception ex)
+        {
+            resposta.Mensagem = ex.Message;
+            resposta.Status = false;
+        }
+
+        return resposta;
     }
 
-    public async Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(int IdLivro)
+    public async Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(int idLivro)
     {
-        RespostaApiDto<AutorModel> resposta = new RespostaApiDto<AutorModel>();
+        var resposta = new RespostaApiDto<AutorModel>();
 
         try
         {
             var livro = await _context.Livros
-                .Include(a => a.AutorModel)
-                .FirstOrDefaultAsync(livroBanco => livroBanco.IdLivro == IdLivro);
+                .Include(livro => livro.Autor)
+                .FirstOrDefaultAsync(livroBanco => livroBanco.IdLivro == idLivro);
 
             if (livro == null)
             {
@@ -78,48 +76,48 @@ public class AutorService : IAutor
                 return resposta;
             }
 
-            resposta.Dados = livro.AutorModel;
+            resposta.Dados = livro.Autor;
             resposta.Mensagem = "Registro encontrado!";
-            return resposta;
         }
-
         catch (Exception ex)
         {
             resposta.Mensagem = ex.Message;
             resposta.Status = false;
-            return resposta;
         }
+
+        return resposta;
     }
 
-    public async Task<RespostaApiDto<List<AutorModel>>> CriarAutor(AutorModelCriarDto autorModelCriarDto)
+    public async Task<RespostaApiDto<List<AutorModel>>> CriarAutor(AutorCriarDto autorCriarDto)
     {
-        RespostaApiDto<List<AutorModel>> resposta = new RespostaApiDto<List<AutorModel>>();
+        var resposta = new RespostaApiDto<List<AutorModel>>();
+
         try
         {
-            var autor = new AutorModel()
+            var autor = new AutorModel
             {
-                Nome = autorModelCriarDto.Nome,
-                Sobrenome = autorModelCriarDto.Sobrenome
+                Nome = autorCriarDto.Nome,
+                Sobrenome = autorCriarDto.Sobrenome
             };
 
             _context.Add(autor);
             await _context.SaveChangesAsync();
 
             resposta.Dados = await _context.Autores.ToListAsync();
-            resposta.Mensagem = "AutorModel cadastrado com sucesso !";
-            return resposta;
+            resposta.Mensagem = "Autor cadastrado com sucesso!";
         }
         catch (Exception ex)
         {
             resposta.Mensagem = ex.Message;
             resposta.Status = false;
-            return resposta;
         }
+
+        return resposta;
     }
 
     public async Task<RespostaApiDto<List<AutorModel>>> EditarAutor(AutorEditarDto autorEditarDto)
     {
-        RespostaApiDto<List<AutorModel>> resposta = new RespostaApiDto<List<AutorModel>>();
+        var resposta = new RespostaApiDto<List<AutorModel>>();
 
         try
         {
@@ -127,36 +125,35 @@ public class AutorService : IAutor
 
             if (autor == null)
             {
-                resposta.Mensagem = "Registro não localizado !";
+                resposta.Mensagem = "Registro não localizado!";
                 return resposta;
             }
 
             autor.Nome = autorEditarDto.Nome;
             autor.Sobrenome = autorEditarDto.Sobrenome;
+
             _context.Update(autor);
             await _context.SaveChangesAsync();
+
             resposta.Dados = await _context.Autores.ToListAsync();
             resposta.Mensagem = "Registro atualizado com sucesso!";
-
-            return resposta;
         }
         catch (Exception ex)
         {
             resposta.Mensagem = ex.Message;
             resposta.Status = false;
-            return resposta;
         }
+
+        return resposta;
     }
 
-
-    public async Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(int IdAutor)
+    public async Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(int idAutor)
     {
-        RespostaApiDto<List<AutorModel>> resposta = new RespostaApiDto<List<AutorModel>>();
+        var resposta = new RespostaApiDto<List<AutorModel>>();
 
         try
         {
-            var autor = await _context.Autores
-            .FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == IdAutor);
+            var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == idAutor);
 
             if (autor == null)
             {
@@ -166,18 +163,16 @@ public class AutorService : IAutor
 
             _context.Remove(autor);
             await _context.SaveChangesAsync();
-            resposta.Mensagem = "Registro apagado com sucesso !";
+
             resposta.Dados = await _context.Autores.ToListAsync();
+            resposta.Mensagem = "Registro apagado com sucesso!";
         }
         catch (Exception ex)
         {
-
             resposta.Mensagem = ex.Message;
             resposta.Status = false;
-
         }
 
         return resposta;
     }
-
 }

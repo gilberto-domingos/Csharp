@@ -1,6 +1,6 @@
 namespace ApiRestFull.DTOs;
 
-public class AutorModelCriarDto
+public class AutorCriarDto
 {
     public string Nome { get; set; } = string.Empty;
 
