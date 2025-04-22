@@ -7,6 +7,12 @@
 - Docker(containers/comunicação entre containers) e RabbitMq(Message Broker) e Microserviços.
 - Uso de Expressões Lambadas.
 - Cultura de testes, para aplicações em cenário real
+- #### Projetos : 
+- ApiRestFull completa.
+- Testando entidades no DDD.
+- Teste unitários, XUnit.
+* Descrições dos projetos aqui no Read-me abaixo.
+
 
 - ### ==> Padrões de Projetos (Design Patterns) 
 - Factory Method -> (Criacional) : Oferece uma interface para criar objetos, permitindo que subclasses decidam qual classe concreta será instanciada, usar quando você não quer depender diretamente de classes concretas.
@@ -27,7 +33,7 @@
 - ### ==> TESTES UNITÁRIOS
 - -> Testando entidades no DDD - As entidades no (Domain-Driven Design) são mais do que apenas classes elas encapsulam comportamento e regras de negócio que precisam ser validadas corretamente.
 - -> Testes Unitários com XUnit - framework de testes automatizados para projetos .NET C# mais usado no momento, desenvolver escrever, organizar e executar testes unitários no código.
-- #### ==> ApiRestFull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
+- ### ==> ApiRestFull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
 - Desenvolvimento ApiRestFull (.Net + React + SqlServer + RabbitMq) e containerização Docker.
 - Organização de estrutura -> Models, Interfaces, Services, Controllers, DTOs, Data, DbContext, etc.
 - Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate 
@@ -42,7 +48,7 @@
 
 ----------------------------------------------------------------------------
 
-# Front-end => React + TypeScript
+# FrontEnd => React + TypeScript
 - React @19.0.0
 - Vite @6.2.0
 - yarn v1.22.22

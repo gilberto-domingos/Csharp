@@ -1,5 +1,7 @@
 # Rascunho de comandos .Net :
 
+dotnet list package
+
 rm -rf Migrations
 dotnet ef migrations add Initial
 dotnet ef database update
@@ -31,6 +33,7 @@ dotnet ef database update --project Caminho/Para/ProjetoDeInfraestrutura.csproj
 dotnet ef migrations add MigrationName
 dotnet ef migrations remove
 
+dotnet ef database drop --force
 
 dotnet clean
 dotnet build
