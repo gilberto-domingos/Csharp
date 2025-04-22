@@ -24,14 +24,14 @@ public class AutorController : ControllerBase
         return Ok(autores);
     }
 
-    [HttpGet("ListarAutorId/{idAutor}")]
+    [HttpGet("ListarAutorId/{idAutor:guid}")]
     public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(Guid idAutor)
     {
         var autor = await _autorInterface.ListarAutorId(idAutor);
         return Ok(autor);
     }
 
-    [HttpGet("ListarAutorPorIdLivro/{idLivro}")]
+    [HttpGet("ListarAutorPorIdLivro/{idLivro:guid}")]
     public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(Guid idLivro)
     {
         var autor = await _autorInterface.ListarAutorPorIdLivro(idLivro);

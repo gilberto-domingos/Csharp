@@ -46,7 +46,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options
     .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-    .LogTo(Console.WriteLine, LogLevel.Information));
+    .LogTo(Console.WriteLine, LogLevel.Information)  // Log só para desenvolvimento
+    .EnableSensitiveDataLogging()); //
 
 var app = builder.Build();
 
