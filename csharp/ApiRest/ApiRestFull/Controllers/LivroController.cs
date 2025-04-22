@@ -27,14 +27,14 @@ public class LivroController : ControllerBase
         return Ok(livros);
     }
 
-    [HttpGet("ListarLivroId/{idLivro}")]
+    [HttpGet("ListarLivroId/{idLivro:guid}")]
     public async Task<ActionResult<RespostaApiDto<LivroModel>>> ListarLivroId(Guid idLivro)
     {
         var livros = await _livroInterface.ListarLivroId(idLivro);
         return Ok(livros);
     }
 
-    [HttpGet("ListarLivroPorIdAutor/{idAutor}")]
+    [HttpGet("ListarLivroPorIdAutor/{idAutor:guid}")]
     public async Task<ActionResult<RespostaApiDto<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor)
     {
         var livro = await _livroInterface.ListarLivroPorIdAutor(idAutor);
@@ -55,7 +55,7 @@ public class LivroController : ControllerBase
         return Ok(livros);
     }
 
-    [HttpDelete("ExcluirLivro")]
+    [HttpDelete("ExcluirLivro/{idLivro:guid}")]
     public async Task<ActionResult<RespostaApiDto<List<LivroModel>>>> ExcluirLivro(Guid idLivro)
     {
         var livros = await _livroInterface.ExcluirLivro(idLivro);
