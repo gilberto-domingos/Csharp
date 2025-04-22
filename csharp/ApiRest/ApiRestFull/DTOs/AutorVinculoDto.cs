@@ -5,7 +5,7 @@ namespace ApiRestFull.DTOs;
 public class AutorVinculoDto
 {
     [Key]
-    public int IdAutor { get; set; }
+    public Guid IdAutor { get; init; }
 
     [Required]
     public required string Nome { get; set; } = string.Empty;

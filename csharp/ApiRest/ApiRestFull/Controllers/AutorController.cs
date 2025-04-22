@@ -25,14 +25,14 @@ public class AutorController : ControllerBase
     }
 
     [HttpGet("ListarAutorId/{idAutor}")]
-    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(int idAutor)
+    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(Guid idAutor)
     {
         var autor = await _autorInterface.ListarAutorId(idAutor);
         return Ok(autor);
     }
 
     [HttpGet("ListarAutorPorIdLivro/{idLivro}")]
-    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(int idLivro)
+    public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(Guid idLivro)
     {
         var autor = await _autorInterface.ListarAutorPorIdLivro(idLivro);
         return Ok(autor);
@@ -54,7 +54,7 @@ public class AutorController : ControllerBase
     }
 
     [HttpDelete("ExcluirAutor")]
-    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ExcluirAutor(int idAutor)
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ExcluirAutor(Guid idAutor)
     {
         var autores = await _autorInterface.ExcluirAutor(idAutor);
         return Ok(autores);

@@ -5,23 +5,31 @@ namespace ApiRestFull.Models;
 public class LivroModel
 {
     [Key]
-    public int IdLivro { get; set; }
+    public Guid IdLivro { get; init; }
 
-    [Required]
-    public string Titulo { get; set; }
+    public required string Titulo { get; set; }
 
-    [Required]
-    public int IdAutor { get; set; }
+    public Guid IdAutor { get; init; }
 
-    [Required]
     public AutorModel Autor { get; set; }
 
     public LivroModel() { }
 
-    public LivroModel(string titulo, int idAutor, AutorModel autor)
+    public LivroModel(string titulo, Guid idAutor, AutorModel autor)
     {
-        Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo), "Todos os livros devem ter titulo !");
+        IdLivro = Guid.NewGuid();
+        Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo), "Todos os livros devem ter título!");
         IdAutor = idAutor;
         Autor = autor ?? throw new ArgumentNullException(nameof(autor));
     }
+
+    //Const.extra para testes automatizados, testes unitários, mocks ou imports com ID definido
+    public LivroModel(Guid idLivro, string titulo, Guid idAutor, AutorModel autor)
+    {
+        IdLivro = idLivro;
+        Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo));
+        IdAutor = idAutor;
+        Autor = autor ?? throw new ArgumentNullException(nameof(autor));
+    }
+
 }

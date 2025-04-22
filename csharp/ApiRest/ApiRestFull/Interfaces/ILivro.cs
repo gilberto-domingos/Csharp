@@ -7,13 +7,13 @@ public interface ILivro
 {
     Task<RespostaApiDto<List<LivroModel>>> ListarLivros();
 
-    Task<RespostaApiDto<LivroModel>> ListarLivroId(int idLivro);
+    Task<RespostaApiDto<LivroModel>> ListarLivroId(Guid idLivro);
 
-    Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(int idAutor);
+    Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor);
 
     Task<RespostaApiDto<List<LivroModel>>> CriarLivro(LivroCriarDto livroModelCriarDto);
 
     Task<RespostaApiDto<List<LivroModel>>> EditarLivro(LivroEditarDto livroEditarDto);
 
-    Task<RespostaApiDto<List<LivroModel>>> ExcluirLivro(int idLivro);
+    Task<RespostaApiDto<List<LivroModel>>> ExcluirLivro(Guid idLivro);
 }
