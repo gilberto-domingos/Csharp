@@ -12,7 +12,6 @@ namespace ApiRestFull.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Definindo o relacionamento entre Livro e Autor
             modelBuilder.Entity<LivroModel>()
                 .HasOne(livro => livro.Autor)
                 .WithMany(autor => autor.Livros)
@@ -22,15 +21,14 @@ namespace ApiRestFull.Data
             base.OnModelCreating(modelBuilder);
         }
 
+
         public static void Initialize(IServiceProvider serviceProvider, ApiDbContext context)
         {
-            // Garantir que o banco de dados foi criado
             context.Database.EnsureCreated();
 
-            // Verificar se já existem autores, se não, inserir dados
             if (!context.Autores.Any())
             {
-                // Inserindo dados para os autores
+                // Populando as tabelas na inicialização para teste dos end-points
                 context.Autores.AddRange(
                     new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Machado", Sobrenome = "de Assis" },
                     new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Clarice", Sobrenome = "Lispector" },
@@ -39,15 +37,12 @@ namespace ApiRestFull.Data
                     new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Carlos", Sobrenome = "Drummond" }
                 );
 
-                // Salvar as alterações dos autores
                 context.SaveChanges();
             }
 
-            // Verificar se já existem livros, se não, inserir dados
             if (!context.Livros.Any())
             {
-                // Inserindo dados para os livros
-                var autores = context.Autores.ToList(); // Pegando os autores para associar aos livros
+                var autores = context.Autores.ToList();
 
                 context.Livros.AddRange(
                     new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Memórias", IdAutor = autores[0].IdAutor },
@@ -57,7 +52,6 @@ namespace ApiRestFull.Data
                     new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Alguma Poesia", IdAutor = autores[4].IdAutor }
                 );
 
-                // Salvar as alterações dos livros
                 context.SaveChanges();
             }
         }
