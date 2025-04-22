@@ -34,7 +34,7 @@ public class LivroService : ILivro
         return resposta;
     }
 
-    public async Task<RespostaApiDto<LivroModel>> ListarLivroId(int idLivro)
+    public async Task<RespostaApiDto<LivroModel>> ListarLivroId(Guid idLivro)
     {
         var resposta = new RespostaApiDto<LivroModel>();
 
@@ -61,7 +61,7 @@ public class LivroService : ILivro
         return resposta;
     }
 
-    public async Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(int idAutor)
+    public async Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor)
     {
         var resposta = new RespostaApiDto<List<LivroModel>>();
 
@@ -168,7 +168,7 @@ public class LivroService : ILivro
         return resposta;
     }
 
-    public async Task<RespostaApiDto<List<LivroModel>>> ExcluirLivro(int idLivro)
+    public async Task<RespostaApiDto<List<LivroModel>>> ExcluirLivro(Guid idLivro)
     {
         var resposta = new RespostaApiDto<List<LivroModel>>();
 

@@ -12,29 +12,54 @@ namespace ApiRestFull.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Definindo o relacionamento entre Livro e Autor
             modelBuilder.Entity<LivroModel>()
                 .HasOne(livro => livro.Autor)
                 .WithMany(autor => autor.Livros)
                 .HasForeignKey(livro => livro.IdAutor)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<AutorModel>().HasData(
-                new AutorModel { IdAutor = 1, Nome = "Machado", Sobrenome = "de Assis" },
-                new AutorModel { IdAutor = 2, Nome = "Clarice", Sobrenome = "Lispector" },
-                new AutorModel { IdAutor = 3, Nome = "Jorge", Sobrenome = "Amado" },
-                new AutorModel { IdAutor = 4, Nome = "Cecília", Sobrenome = "Meireles" },
-                new AutorModel { IdAutor = 5, Nome = "Carlos", Sobrenome = "Drummond de Andrade" }
-            );
-
-            modelBuilder.Entity<LivroModel>().HasData(
-                new LivroModel { IdLivro = 1, Titulo = "Memórias Póstumas de Brás Cubas", IdAutor = 1 },
-                new LivroModel { IdLivro = 2, Titulo = "A Hora da Estrela", IdAutor = 2 },
-                new LivroModel { IdLivro = 3, Titulo = "Capitães da Areia", IdAutor = 3 },
-                new LivroModel { IdLivro = 4, Titulo = "Passaredo", IdAutor = 4 },
-                new LivroModel { IdLivro = 5, Titulo = "Alguma Poesia", IdAutor = 5 }
-            );
-
             base.OnModelCreating(modelBuilder);
+        }
+
+        public static void Initialize(IServiceProvider serviceProvider, ApiDbContext context)
+        {
+            // Garantir que o banco de dados foi criado
+            context.Database.EnsureCreated();
+
+            // Verificar se já existem autores, se não, inserir dados
+            if (!context.Autores.Any())
+            {
+                // Inserindo dados para os autores
+                context.Autores.AddRange(
+                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Machado", Sobrenome = "de Assis" },
+                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Clarice", Sobrenome = "Lispector" },
+                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Jorge", Sobrenome = "Amado" },
+                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Cecília", Sobrenome = "Meireles" },
+                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Carlos", Sobrenome = "Drummond" }
+                );
+
+                // Salvar as alterações dos autores
+                context.SaveChanges();
+            }
+
+            // Verificar se já existem livros, se não, inserir dados
+            if (!context.Livros.Any())
+            {
+                // Inserindo dados para os livros
+                var autores = context.Autores.ToList(); // Pegando os autores para associar aos livros
+
+                context.Livros.AddRange(
+                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Memórias", IdAutor = autores[0].IdAutor },
+                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Hora Estrelar", IdAutor = autores[1].IdAutor },
+                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Capitães", IdAutor = autores[2].IdAutor },
+                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Passaredo", IdAutor = autores[3].IdAutor },
+                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Alguma Poesia", IdAutor = autores[4].IdAutor }
+                );
+
+                // Salvar as alterações dos livros
+                context.SaveChanges();
+            }
         }
     }
 }

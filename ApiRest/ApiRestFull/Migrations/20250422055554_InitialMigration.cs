@@ -1,13 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
-
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace ApiRestFull.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +15,7 @@ namespace ApiRestFull.Migrations
                 name: "Autores",
                 columns: table => new
                 {
-                    IdAutor = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdAutor = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -30,10 +28,9 @@ namespace ApiRestFull.Migrations
                 name: "Livros",
                 columns: table => new
                 {
-                    IdLivro = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdLivro = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdAutor = table.Column<int>(type: "int", nullable: false)
+                    IdAutor = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,30 +41,6 @@ namespace ApiRestFull.Migrations
                         principalTable: "Autores",
                         principalColumn: "IdAutor",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Autores",
-                columns: new[] { "IdAutor", "Nome", "Sobrenome" },
-                values: new object[,]
-                {
-                    { 1, "Machado", "de Assis" },
-                    { 2, "Clarice", "Lispector" },
-                    { 3, "Jorge", "Amado" },
-                    { 4, "Cecília", "Meireles" },
-                    { 5, "Carlos", "Drummond de Andrade" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Livros",
-                columns: new[] { "IdLivro", "IdAutor", "Titulo" },
-                values: new object[,]
-                {
-                    { 1, 1, "Memórias Póstumas de Brás Cubas" },
-                    { 2, 2, "A Hora da Estrela" },
-                    { 3, 3, "Capitães da Areia" },
-                    { 4, 4, "Passaredo" },
-                    { 5, 5, "Alguma Poesia" }
                 });
 
             migrationBuilder.CreateIndex(

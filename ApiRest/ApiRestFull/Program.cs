@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 DotNetEnv.Env.Load();
 
+// Carregando variáveis de ambiente
 var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var saPassword = Environment.GetEnvironmentVariable("SA_PASSWORD");
@@ -18,7 +19,6 @@ var connectionString =
 builder.Configuration["ConnectionStrings:DefaultConnection"] = connectionString;
 
 builder.WebHost.UseUrls("http://0.0.0.0:5000");
-
 
 builder.Services.AddScoped<IAutor, AutorService>();
 builder.Services.AddScoped<ILivro, LivroService>();
@@ -44,10 +44,18 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+// Configurando o DbContext
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+
+// Inicializando o banco de dados e populando os dados (se necessário)
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApiDbContext>();
+    ApiDbContext.Initialize(scope.ServiceProvider, context);
+}
 
 app.UseRouting();
 

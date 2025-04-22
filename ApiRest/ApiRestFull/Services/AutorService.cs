@@ -34,7 +34,7 @@ public class AutorService : IAutor
         return resposta;
     }
 
-    public async Task<RespostaApiDto<AutorModel>> ListarAutorId(int idAutor)
+    public async Task<RespostaApiDto<AutorModel>> ListarAutorId(Guid idAutor)
     {
         var resposta = new RespostaApiDto<AutorModel>();
 
@@ -60,7 +60,7 @@ public class AutorService : IAutor
         return resposta;
     }
 
-    public async Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(int idLivro)
+    public async Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(Guid idLivro)
     {
         var resposta = new RespostaApiDto<AutorModel>();
 
@@ -147,7 +147,7 @@ public class AutorService : IAutor
         return resposta;
     }
 
-    public async Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(int idAutor)
+    public async Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(Guid idAutor)
     {
         var resposta = new RespostaApiDto<List<AutorModel>>();
 

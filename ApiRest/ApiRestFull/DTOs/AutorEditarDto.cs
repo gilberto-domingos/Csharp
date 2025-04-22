@@ -4,7 +4,7 @@ namespace ApiRestFull.DTOs;
 
 public class AutorEditarDto
 {
-    public int idAutor { get; set; }
+    public Guid idAutor { get; init; }
 
     [Required]
     public string Nome { get; set; } = string.Empty;

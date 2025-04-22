@@ -6,21 +6,28 @@ namespace ApiRestFull.Models;
 public class AutorModel
 {
     [Key]
-    public int IdAutor { get; set; }
+    public Guid IdAutor { get; init; }
 
-    [Required]
-    public required string Nome { get; set; } = string.Empty;
+    public required string Nome { get; set; }
 
-    [Required]
-    public required string Sobrenome { get; set; } = string.Empty;
+    public required string Sobrenome { get; set; }
 
     [JsonIgnore]
-    public ICollection<LivroModel> Livros { get; set; }
+    public ICollection<LivroModel> Livros { get; set; } = new List<LivroModel>();
 
     public AutorModel() { }
 
     public AutorModel(string nome, string sobrenome)
     {
+        IdAutor = Guid.NewGuid();
+        Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+        Sobrenome = sobrenome ?? throw new ArgumentNullException(nameof(sobrenome));
+    }
+
+    //Const.extra para testes automatizados, testes unitários, mocks ou imports com ID definido
+    public AutorModel(Guid idAutor, string nome, string sobrenome)
+    {
+        IdAutor = idAutor;
         Nome = nome ?? throw new ArgumentNullException(nameof(nome));
         Sobrenome = sobrenome ?? throw new ArgumentNullException(nameof(sobrenome));
     }
