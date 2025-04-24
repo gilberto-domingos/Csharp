@@ -10,14 +10,10 @@ namespace ApiRestFull.Data
         public DbSet<AutorModel> Autores { get; set; }
         public DbSet<LivroModel> Livros { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LivroModel>()
-                .HasOne(livro => livro.Autor)
-                .WithMany(autor => autor.Livros)
-                .HasForeignKey(livro => livro.IdAutor)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApiDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
 

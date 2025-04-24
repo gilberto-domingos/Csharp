@@ -2,7 +2,6 @@
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
 
 - #### Conteúdo :
-- Lógica de Programação.
 - POO - Programação Orientada a Objetos.
 - Docker(containers/comunicação entre containers) e RabbitMq(Message Broker) e Microserviços.
 - Uso de Expressões Lambadas.
@@ -60,4 +59,6 @@
 - Botão alternar temas (Toggle Theme)
 - Menu lateral (side-menu)
 - Drawer responsivo
+- Integração Back-end .NET
+- CRUD - create, read, update, delete
 
