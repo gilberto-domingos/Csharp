@@ -56,8 +56,9 @@ dotnet add package Swashbuckle.AspNetCore
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer (ou outro provider)
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer 
 dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet new webapi -n LaboratorioDeTestesAPI
 
 
 
