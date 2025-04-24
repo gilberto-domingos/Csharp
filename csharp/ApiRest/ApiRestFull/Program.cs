@@ -49,6 +49,18 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
     .LogTo(Console.WriteLine, LogLevel.Information)  // Log só para desenvolvimento
     .EnableSensitiveDataLogging()); //
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ReactPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -58,6 +70,9 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseRouting();
+
+app.UseCors("ReactPolicy");
+
 
 app.UseHttpsRedirection();
 
