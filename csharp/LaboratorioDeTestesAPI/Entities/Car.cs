@@ -7,6 +7,7 @@ internal class Car
     public Guid Id { get; init; }
     public string Name { get; set; }
 
+    public Car() { }
 
     public Car(Guid id, string name)
     {
