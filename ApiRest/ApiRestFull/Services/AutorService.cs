@@ -1,18 +1,16 @@
-using Microsoft.EntityFrameworkCore;
-using ApiRestFull.Data;
-using ApiRestFull.DTOs;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Models;
+using ApiRestFull.DTOs;
 
 namespace ApiRestFull.Services;
 
 public class AutorService : IAutor
 {
-    private readonly ApiDbContext _context;
+    private readonly IAutorRepository _autorRepository;
 
-    public AutorService(ApiDbContext context)
+    public AutorService(IAutorRepository autorRepository)
     {
-        _context = context;
+        _autorRepository = autorRepository;
     }
 
     public async Task<RespostaApiDto<List<AutorModel>>> ListarAutores()
@@ -21,7 +19,7 @@ public class AutorService : IAutor
 
         try
         {
-            var autores = await _context.Autores.ToListAsync();
+            var autores = await _autorRepository.ListarAutores();
             resposta.Dados = autores;
             resposta.Mensagem = "Todos os autores foram coletados";
         }
@@ -40,8 +38,7 @@ public class AutorService : IAutor
 
         try
         {
-            var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == idAutor);
-
+            var autor = await _autorRepository.ListarAutorPorId(idAutor);
             if (autor == null)
             {
                 resposta.Mensagem = "Nenhum registro encontrado!";
@@ -66,17 +63,14 @@ public class AutorService : IAutor
 
         try
         {
-            var livro = await _context.Livros
-                .Include(livro => livro.Autor)
-                .FirstOrDefaultAsync(livroBanco => livroBanco.IdLivro == idLivro);
-
-            if (livro == null)
+            var autor = await _autorRepository.ListarAutorPorIdLivro(idLivro);
+            if (autor == null)
             {
                 resposta.Mensagem = "Nenhum registro encontrado!";
                 return resposta;
             }
 
-            resposta.Dados = livro.Autor;
+            resposta.Dados = autor;
             resposta.Mensagem = "Registro encontrado!";
         }
         catch (Exception ex)
@@ -100,10 +94,8 @@ public class AutorService : IAutor
                 Sobrenome = autorCriarDto.Sobrenome
             };
 
-            _context.Add(autor);
-            await _context.SaveChangesAsync();
-
-            resposta.Dados = await _context.Autores.ToListAsync();
+            var autorCriado = await _autorRepository.CriarAutor(autor);
+            resposta.Dados = new List<AutorModel> { autorCriado };
             resposta.Mensagem = "Autor cadastrado com sucesso!";
         }
         catch (Exception ex)
@@ -121,22 +113,16 @@ public class AutorService : IAutor
 
         try
         {
-            var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == autorEditarDto.idAutor);
-
-            if (autor == null)
+            var autor = new AutorModel
             {
-                resposta.Mensagem = "Registro não localizado!";
-                return resposta;
-            }
+                IdAutor = autorEditarDto.idAutor,
+                Nome = autorEditarDto.Nome,
+                Sobrenome = autorEditarDto.Sobrenome
+            };
 
-            autor.Nome = autorEditarDto.Nome;
-            autor.Sobrenome = autorEditarDto.Sobrenome;
-
-            _context.Update(autor);
-            await _context.SaveChangesAsync();
-
-            resposta.Dados = await _context.Autores.ToListAsync();
-            resposta.Mensagem = "Registro atualizado com sucesso!";
+            var autorAtualizado = await _autorRepository.EditarAutor(autor);
+            resposta.Dados = new List<AutorModel> { autorAtualizado };
+            resposta.Mensagem = "Autor atualizado com sucesso!";
         }
         catch (Exception ex)
         {
@@ -153,19 +139,14 @@ public class AutorService : IAutor
 
         try
         {
-            var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.IdAutor == idAutor);
-
+            var autor = await _autorRepository.ExcluirAutor(idAutor);
             if (autor == null)
             {
-                resposta.Mensagem = "Nenhum registro foi encontrado";
+                resposta.Mensagem = "Nenhum registro encontrado!";
                 return resposta;
             }
 
-            _context.Remove(autor);
-            await _context.SaveChangesAsync();
-
-            resposta.Dados = await _context.Autores.ToListAsync();
-            resposta.Mensagem = "Registro apagado com sucesso!";
+            resposta.Mensagem = "Autor excluído com sucesso!";
         }
         catch (Exception ex)
         {
