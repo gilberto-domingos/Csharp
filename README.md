@@ -39,8 +39,6 @@
 - SWAGGER - Configuração e teste de end-points na web envio requisições HTTP (GET, POST, PUT, DELETE) 
 - CRUD - Create, Read, Update, Delete
 - Implementação de Repository, Exceptions, Handlers, Middleware.
-
-- ### ==> Docker (Containers)
 - Dockerfiles, docker-compose.yml , configuração dos containers, teste de conexão e comunicação entre os containers.
 - Configuração de .env (variáveis de ambiente) - Portas, connection strings, secrets, etc.
 
