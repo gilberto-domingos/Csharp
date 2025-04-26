@@ -1,18 +1,11 @@
-using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 
-namespace LaboratorioDeTestesAPI.Entities;
-
-internal class Car
+namespace LaboratorioDeTestesAPI.Entities
 {
-    public Guid Id { get; init; }
-    public string Name { get; set; }
-
-    public Car() { }
-
-    public Car(Guid id, string name)
+    public class Car
     {
-        Id = id;
-        Name = name;
-    }
+        [Key]
+        public Guid Id { get; set; }
 
+    }
 }
