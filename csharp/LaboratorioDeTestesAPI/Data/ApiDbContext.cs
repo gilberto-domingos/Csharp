@@ -7,11 +7,11 @@ using System;
 
 internal sealed class ApiDbContext : DbContext
 {
-    public DbSet<Car> Cars { get; init; }
-
     public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
     {
+
     }
+    public DbSet<Car> Cars { get; init; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
