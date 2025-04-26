@@ -11,7 +11,7 @@ public interface ILivro
 
     Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor);
 
-    Task<RespostaApiDto<List<LivroModel>>> CriarLivro(LivroCriarDto livroModelCriarDto);
+    Task<RespostaApiDto<List<LivroModel>>> CriarLivro(LivroCriarDto livroCriarDto);
 
     Task<RespostaApiDto<List<LivroModel>>> EditarLivro(LivroEditarDto livroEditarDto);
 
