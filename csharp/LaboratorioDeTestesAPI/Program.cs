@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using LaboratorioDeTestesAPI.Interfaces;
 using LaboratorioDeTestesAPI.Services;
 using LaboratorioDeTestesAPI.Repositories;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +48,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 var app = builder.Build();
 
