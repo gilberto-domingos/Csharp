@@ -1,5 +1,4 @@
 using LaboratorioDeTestesAPI.Data;
-using LaboratorioDeTestesAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LaboratorioDeTestesAPI.Repositories
@@ -16,6 +15,19 @@ namespace LaboratorioDeTestesAPI.Repositories
         public async Task<bool> CheckChassiExistsAsync(Guid id, CancellationToken cancelToken)
         {
             return await _context.Cars.AnyAsync(car => car.Id == id, cancellationToken: cancelToken);
+        }
+
+        public async Task<Car> AddAsync(Car car)
+        {
+            await _context.Cars.AddAsync(car);
+            await _context.SaveChangesAsync();
+            return car;
+        }
+
+        public async Task<Car?> GetByIdAsync(Guid id, CancellationToken cancelToken)
+        {
+            return await _context.Cars
+                .FirstOrDefaultAsync(car => car.Id == id, cancellationToken: cancelToken);
         }
     }
 }

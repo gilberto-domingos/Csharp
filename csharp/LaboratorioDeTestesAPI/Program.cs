@@ -1,5 +1,8 @@
 using LaboratorioDeTestesAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using LaboratorioDeTestesAPI.Interfaces;
+using LaboratorioDeTestesAPI.Services;
+using LaboratorioDeTestesAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +19,16 @@ builder.Configuration["ConnectionStrings:DefaultConnection"] = connectionString;
 
 builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
+builder.Services.AddScoped<ICar, CarChassiValidatorService>();
+builder.Services.AddScoped<ICarRepository, CarRepository>();
+
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options
@@ -25,9 +36,26 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
         .LogTo(Console.WriteLine, LogLevel.Information) // só para desenvolvimento
         .EnableSensitiveDataLogging());
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ReactPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 
 
 using (var scope = app.Services.CreateScope())
