@@ -22,11 +22,14 @@ namespace LaboratorioDeTestesAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("LaboratorioDeTestesAPI.Entities.Car", b =>
+            modelBuilder.Entity("Car", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasMaxLength(50)
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Chassi")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -40,52 +43,32 @@ namespace LaboratorioDeTestesAPI.Migrations
                         new
                         {
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
-                            Name = "Fusca"
+                            Chassi = 123456,
+                            Name = "Ferrari 488 GTB"
                         },
                         new
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Name = "Gol"
+                            Chassi = 234567,
+                            Name = "Lamborghini Aventador"
                         },
                         new
                         {
                             Id = new Guid("33333333-3333-3333-3333-333333333333"),
-                            Name = "Civic"
+                            Chassi = 345678,
+                            Name = "Porsche 911 Turbo"
                         },
                         new
                         {
                             Id = new Guid("44444444-4444-4444-4444-444444444444"),
-                            Name = "Corolla"
+                            Chassi = 456789,
+                            Name = "BMW M5 Competition"
                         },
                         new
                         {
                             Id = new Guid("55555555-5555-5555-5555-555555555555"),
-                            Name = "Uno"
-                        },
-                        new
-                        {
-                            Id = new Guid("66666666-6666-6666-6666-666666666666"),
-                            Name = "Palio"
-                        },
-                        new
-                        {
-                            Id = new Guid("77777777-7777-7777-7777-777777777777"),
-                            Name = "HB20"
-                        },
-                        new
-                        {
-                            Id = new Guid("88888888-8888-8888-8888-888888888888"),
-                            Name = "Onix"
-                        },
-                        new
-                        {
-                            Id = new Guid("99999999-9999-9999-9999-999999999999"),
-                            Name = "Cruze"
-                        },
-                        new
-                        {
-                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            Name = "Fiesta"
+                            Chassi = 567890,
+                            Name = "Audi R8 V10"
                         });
                 });
 #pragma warning restore 612, 618

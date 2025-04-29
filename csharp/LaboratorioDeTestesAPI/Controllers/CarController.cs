@@ -1,6 +1,6 @@
+using LaboratorioDeTestesAPI.Dtos;
 using LaboratorioDeTestesAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace LaboratorioDeTestesAPI.Controllers
 {
@@ -15,11 +15,30 @@ namespace LaboratorioDeTestesAPI.Controllers
             _carInterface = carInterface;
         }
 
-        [HttpGet("validate/{id}")]
+        [HttpGet("validate/{id:guid}")]
         public async Task<IActionResult> ValidateChassi(Guid id, CancellationToken cancelToken)
         {
             bool isValid = await _carInterface.CheckIfValidAsync(id, cancelToken);
             return Ok(new { IsValid = isValid });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(CarDto carDto)
+        {
+            var createdCar = await _carInterface.CreateAsync(carDto);
+
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = createdCar.Id }, createdCar);
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancelToken)
+        {
+            var car = await _carInterface.GetByIdAsync(id, cancelToken);
+
+            if (car == null)
+                return NotFound();
+
+            return Ok(car);
         }
     }
 }

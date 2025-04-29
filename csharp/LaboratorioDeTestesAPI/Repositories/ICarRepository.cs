@@ -1,9 +1,6 @@
-using LaboratorioDeTestesAPI.Entities;
-
-namespace LaboratorioDeTestesAPI.Interfaces
+public interface ICarRepository
 {
-    public interface ICarRepository
-    {
-        Task<bool> CheckChassiExistsAsync(Guid id, CancellationToken cancelToken);
-    }
+    Task<bool> CheckChassiExistsAsync(Guid id, CancellationToken cancelToken);
+    Task<Car> AddAsync(Car car);
+    Task<Car?> GetByIdAsync(Guid id, CancellationToken cancelToken);
 }

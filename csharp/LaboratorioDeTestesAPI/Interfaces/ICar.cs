@@ -1,7 +1,11 @@
-namespace LaboratorioDeTestesAPI.Interfaces;
+using LaboratorioDeTestesAPI.Dtos;
 
-
-public interface ICar
+namespace LaboratorioDeTestesAPI.Interfaces
 {
-    Task<bool> CheckIfValidAsync(Guid id, CancellationToken cancelToken);
+    public interface ICar
+    {
+        Task<bool> CheckIfValidAsync(Guid id, CancellationToken cancelToken);
+        Task<Car> CreateAsync(CarDto carDto);
+        Task<Car?> GetByIdAsync(Guid id, CancellationToken cancelToken);
+    }
 }
