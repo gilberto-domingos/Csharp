@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Models;
 using ApiRestFull.DTOs;
-using Microsoft.Identity.Client;
 
 namespace ApiRestFull.Controllers;
 

@@ -1,6 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
+using MediatR;
 using ApiRestFull.DTOs;
-using ApiRestFull.Interfaces;
+using ApiRestFull.Commands.Autor;
+using ApiRestFull.Queries.Autor;
+using Microsoft.AspNetCore.Mvc;
 using ApiRestFull.Models;
 
 namespace ApiRestFull.Controllers;
@@ -9,56 +11,52 @@ namespace ApiRestFull.Controllers;
 [Route("api/[controller]")]
 public class AutorController : ControllerBase
 {
-    private readonly IAutor _autorInterface;
+    private readonly IMediator _mediator;
 
-    public AutorController(IAutor autorInterface)
+    public AutorController(IMediator mediator)
     {
-        _autorInterface = autorInterface;
+        _mediator = mediator;
     }
-
 
     [HttpGet("ListarAutores")]
     public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ListarAutores()
     {
-        var autores = await _autorInterface.ListarAutores();
-        return Ok(autores);
+        var result = await _mediator.Send(new ListarAutoresQuery());
+        return Ok(result);
     }
 
     [HttpGet("ListarAutorId/{idAutor:guid}")]
     public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorId(Guid idAutor)
     {
-        var autor = await _autorInterface.ListarAutorId(idAutor);
-        return Ok(autor);
+        var result = await _mediator.Send(new ListarAutorIdQuery(idAutor));
+        return Ok(result);
     }
 
     [HttpGet("ListarAutorPorIdLivro/{idLivro:guid}")]
     public async Task<ActionResult<RespostaApiDto<AutorModel>>> ListarAutorPorIdLivro(Guid idLivro)
     {
-        var autor = await _autorInterface.ListarAutorPorIdLivro(idLivro);
-        return Ok(autor);
+        var result = await _mediator.Send(new ListarAutorPorIdLivroQuery(idLivro));
+        return Ok(result);
     }
 
     [HttpPost("CriarAutor")]
-    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> CriarAutor(AutorCriarDto autorCriarDto)
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> CriarAutor([FromBody] AutorCriarDto dto)
     {
-        var autores = await _autorInterface.CriarAutor(autorCriarDto);
-        return Ok(autores);
-
+        var result = await _mediator.Send(new CriarAutorCommand(dto));
+        return Ok(result);
     }
 
     [HttpPut("EditarAutor")]
-    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> EditarAutor(AutorEditarDto autorEditarDto)
+    public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> EditarAutor([FromBody] AutorEditarDto dto)
     {
-        var autores = await _autorInterface.EditarAutor(autorEditarDto);
-        return Ok(autores);
+        var result = await _mediator.Send(new EditarAutorCommand(dto));
+        return Ok(result);
     }
 
-    [HttpDelete("ExcluirAutor")]
+    [HttpDelete("ExcluirAutor/{idAutor:guid}")]
     public async Task<ActionResult<RespostaApiDto<List<AutorModel>>>> ExcluirAutor(Guid idAutor)
     {
-        var autores = await _autorInterface.ExcluirAutor(idAutor);
-        return Ok(autores);
+        var result = await _mediator.Send(new ExcluirAutorCommand(idAutor));
+        return Ok(result);
     }
-
-
 }

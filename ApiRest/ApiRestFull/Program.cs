@@ -4,6 +4,7 @@ using ApiRestFull.Interfaces;
 using ApiRestFull.Services;
 using ApiRestFull.Repositories;
 using System.Reflection;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,8 @@ builder.Services.AddScoped<ILivro, LivroService>();
 
 builder.Services.AddControllers();
 
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -49,25 +52,34 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options
-    .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-    .LogTo(Console.WriteLine, LogLevel.Information)  // Log só para desenvolvimento
-    .EnableSensitiveDataLogging()); //
-
+        .UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .LogTo(Console.WriteLine, LogLevel.Information)
+        .EnableSensitiveDataLogging()
+);
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ReactPolicy", policy =>
     {
         policy.WithOrigins("http://localhost:5173")
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
-
 
 var app = builder.Build();
 
 app.UseMiddleware<ApiRestFull.Middlewares.ExceptionMiddleware>();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiRestFull v1");
+        options.RoutePrefix = string.Empty;  // Acessível na raiz
+    });
+}
 
 using (var scope = app.Services.CreateScope())
 {
@@ -76,20 +88,9 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseRouting();
-
 app.UseCors("ReactPolicy");
-
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
-app.UseSwagger();
-app.UseSwaggerUI(options =>
-{
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiRestFull v1");
-    options.RoutePrefix = string.Empty;
-});
 
 app.MapControllers();
 
