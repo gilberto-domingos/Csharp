@@ -11,9 +11,11 @@ public class LivroModel
 
     public Guid IdAutor { get; init; }
 
-    public AutorModel Autor { get; set; }
+    public required AutorModel Autor { get; set; }
+
 
     public LivroModel() { }
+
 
     public LivroModel(string titulo, Guid idAutor, AutorModel autor)
     {

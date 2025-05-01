@@ -41,12 +41,12 @@ namespace ApiRestFull.Data
                 var autores = context.Autores.ToList();
 
                 context.Livros.AddRange(
-                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Memórias", IdAutor = autores[0].IdAutor },
-                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Hora Estrelar", IdAutor = autores[1].IdAutor },
-                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Capitães", IdAutor = autores[2].IdAutor },
-                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Passaredo", IdAutor = autores[3].IdAutor },
-                    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Alguma Poesia", IdAutor = autores[4].IdAutor }
-                );
+    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Memórias", IdAutor = autores[0].IdAutor, Autor = autores[0] },
+    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Hora Estrelar", IdAutor = autores[1].IdAutor, Autor = autores[1] },
+    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Capitães", IdAutor = autores[2].IdAutor, Autor = autores[2] },
+    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Passaredo", IdAutor = autores[3].IdAutor, Autor = autores[3] },
+    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Alguma Poesia", IdAutor = autores[4].IdAutor, Autor = autores[4] }
+);
 
                 context.SaveChanges();
             }
