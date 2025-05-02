@@ -35,13 +35,15 @@
 - ### ==> ApiRestFull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
 - Desenvolvimento ApiRestFull (.Net + React + SqlServer + RabbitMq) e containerização Docker.
 - Organização de estrutura -> Models, Interfaces, Services, Controllers, DTOs, Data, DbContext, etc.
-- Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate 
-- SWAGGER - Configuração e teste de end-points na web envio requisições HTTP (GET, POST, PUT, DELETE) 
-- CRUD - Create, Read, Update, Delete , Injeção de dependência (ILogger, RequestDelegate)
-- Implementação do Repository (Repository Pattern), ExceptionMiddleware para tratamento global.
-- Implementação do MediatR (MediatR Pattern), Command e CommandHandler.
-- Implementação do  CQRS (Command Query Responsibility Segregation).
-- Dockerfiles, docker-compose.yml , configuração dos containers, teste de conexão e comunicação entre os containers.
+- Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate. 
+- SWAGGER - Configuração e teste de end-points na web envio requisições HTTP (GET, POST, PUT, DELETE). 
+- CRUD-Create,Read,Update,Delete, Injeção de dependência(ILogger,RequestDelegate) padrões ASP.NET Core.
+- Repository (Repository Pattern).
+- Exceptions, ExceptionMiddleware para tratamento global.
+- Action Filter - ApiResponseEnvelopeFilter, Padrão global de resposta.
+- MediatR (MediatR Pattern), Commands, Handlers e Queries.
+- CQRS (Command Query Responsibility Segregation).
+- Dockerfiles, docker-compose.yml,configuração dos containers, conexão e comunicação entre os containers.
 - Configuração de .env (variáveis de ambiente) - Portas, connection strings, secrets, etc.
 
 

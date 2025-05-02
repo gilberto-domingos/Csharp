@@ -4,9 +4,9 @@ using MediatR;
 
 namespace ApiRestFull.Commands.Autor
 {
-    public class EditarAutorCommand : IRequest<RespostaApiDto<List<AutorModel>>>
+    public class EditarAutorCommand : IRequest<AutorModel>
     {
-        public AutorEditarDto AutorEditarDto { get; }
+        public AutorEditarDto AutorEditarDto { get; set; }
 
         public EditarAutorCommand(AutorEditarDto autorEditarDto)
         {

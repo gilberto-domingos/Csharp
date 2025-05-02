@@ -21,7 +21,7 @@ public class LivroRepository : ILivroRepository
         return await _context.Livros.Include(l => l.Autor).ToListAsync();
     }
 
-    public async Task<LivroModel?> ListarLivroId(Guid idLivro)
+    public async Task<LivroModel> ListarLivroId(Guid idLivro)
     {
         var livro = await _context.Livros
             .Include(l => l.Autor)
@@ -33,7 +33,7 @@ public class LivroRepository : ILivroRepository
         return livro;
     }
 
-    public async Task<List<LivroModel>> ListarLivroPorIdAutor(Guid idAutor)
+    public async Task<List<LivroModel>> ListarLivrosPorIdAutor(Guid idAutor)
     {
         var livros = await _context.Livros
             .Include(l => l.Autor)
@@ -43,7 +43,7 @@ public class LivroRepository : ILivroRepository
         return livros;
     }
 
-    public async Task<List<LivroModel>> CriarLivro(LivroCriarDto livroCriarDto)
+    public async Task<LivroModel> CriarLivro(LivroCriarDto livroCriarDto)
     {
         var autor = await _context.Autores
             .FirstOrDefaultAsync(a => a.IdAutor == livroCriarDto.Autor.IdAutor);
@@ -60,10 +60,10 @@ public class LivroRepository : ILivroRepository
         _context.Livros.Add(livro);
         await _context.SaveChangesAsync();
 
-        return await ListarLivros();
+        return livro;
     }
 
-    public async Task<List<LivroModel>> EditarLivro(LivroEditarDto livroEditarDto)
+    public async Task<LivroModel> EditarLivro(LivroEditarDto livroEditarDto)
     {
         var livro = await _context.Livros
             .Include(l => l.Autor)
@@ -84,10 +84,10 @@ public class LivroRepository : ILivroRepository
         _context.Livros.Update(livro);
         await _context.SaveChangesAsync();
 
-        return await ListarLivros();
+        return livro;
     }
 
-    public async Task<List<LivroModel>> ExcluirLivro(Guid idLivro)
+    public async Task<LivroModel> ExcluirLivro(Guid idLivro)
     {
         var livro = await _context.Livros
             .FirstOrDefaultAsync(l => l.IdLivro == idLivro);
@@ -98,6 +98,6 @@ public class LivroRepository : ILivroRepository
         _context.Livros.Remove(livro);
         await _context.SaveChangesAsync();
 
-        return await ListarLivros();
+        return livro;
     }
 }

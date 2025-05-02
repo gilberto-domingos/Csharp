@@ -5,6 +5,7 @@ using ApiRestFull.Services;
 using ApiRestFull.Repositories;
 using System.Reflection;
 using MediatR;
+using ApiRestFull.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +27,10 @@ builder.Services.AddScoped<IAutor, AutorService>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 builder.Services.AddScoped<ILivro, LivroService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ApiResponseEnvelopeFilter>();
+});
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
@@ -77,7 +81,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiRestFull v1");
-        options.RoutePrefix = string.Empty;  // Acessível na raiz
+        options.RoutePrefix = string.Empty;
     });
 }
 

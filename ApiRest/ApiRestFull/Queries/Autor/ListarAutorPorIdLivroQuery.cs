@@ -1,12 +1,11 @@
-using ApiRestFull.DTOs;
 using ApiRestFull.Models;
 using MediatR;
 
 namespace ApiRestFull.Queries.Autor
 {
-    public class ListarAutorPorIdLivroQuery : IRequest<RespostaApiDto<AutorModel>>
+    public class ListarAutorPorIdLivroQuery : IRequest<AutorModel>
     {
-        public Guid IdLivro { get; set; }
+        public Guid IdLivro { get; }
 
         public ListarAutorPorIdLivroQuery(Guid idLivro)
         {

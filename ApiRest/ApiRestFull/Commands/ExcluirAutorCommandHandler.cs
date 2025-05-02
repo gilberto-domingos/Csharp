@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ApiRestFull.Handlers.Autor
 {
-    public class ExcluirAutorCommandHandler : IRequestHandler<ExcluirAutorCommand, RespostaApiDto<List<AutorModel>>>
+    public class ExcluirAutorCommandHandler : IRequestHandler<ExcluirAutorCommand, AutorModel>
     {
         private readonly IAutor _autorService;
 
@@ -15,7 +15,7 @@ namespace ApiRestFull.Handlers.Autor
             _autorService = autorService;
         }
 
-        public async Task<RespostaApiDto<List<AutorModel>>> Handle(ExcluirAutorCommand request, CancellationToken cancellationToken)
+        public async Task<AutorModel> Handle(ExcluirAutorCommand request, CancellationToken cancellationToken)
         {
             return await _autorService.ExcluirAutor(request.IdAutor);
         }

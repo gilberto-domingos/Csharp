@@ -1,68 +1,68 @@
 using Microsoft.AspNetCore.Mvc;
-using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using MediatR;
 using ApiRestFull.DTOs;
+using ApiRestFull.Models;
+using ApiRestFull.Handlers.Livro.Commands;
+using ApiRestFull.Handlers.Commands;
+using ApiRestFull.Handlers.Livro.Queries;
+using ApiRestFull.Queries.Livro;  
+ 
 
-namespace ApiRestFull.Controllers;
 
-
-[ApiController]
-[Route("api/[Controller]")]
-public class LivroController : ControllerBase
+namespace ApiRestFull.Controllers
 {
-    private readonly ILivro _livroInterface;
-
-
-    public LivroController(ILivro livroInterface)
+    [ApiController]
+    [Route("api/[Controller]")]
+    public class LivroController : ControllerBase
     {
+        private readonly IMediator _mediator;
 
-        _livroInterface = livroInterface;
+        public LivroController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost("CriarLivro")]
+        public async Task<ActionResult<LivroModel>> CriarLivro(LivroCriarDto livroCriarDto)
+        {
+            var livro = await _mediator.Send(new CriarLivroCommand(livroCriarDto));
+            return Ok(livro);
+        }
+
+        [HttpGet("ListarLivros")]
+        public async Task<ActionResult<List<LivroModel>>> ListarLivros()
+        {
+            var livros = await _mediator.Send(new ListarLivrosQuery());
+            return Ok(livros);
+        }
+
+        [HttpGet("ListarLivroId/{idLivro:guid}")]
+        public async Task<ActionResult<LivroModel>> ListarLivroId(Guid idLivro)
+        {
+            var livro = await _mediator.Send(new ListarLivroIdQuery(idLivro));
+            return Ok(livro);
+        }
+
+        [HttpGet("ListarLivroPorIdAutor/{idAutor:guid}")]
+        public async Task<ActionResult<LivroModel>> ListarLivroPorIdAutor(Guid idAutor)
+        {
+            var livro = await _mediator.Send(new ListarLivrosPorIdAutorQuery(idAutor));
+            return Ok(livro);
+        }
+
+
+        [HttpPut("EditarLivro")]
+        public async Task<ActionResult<LivroModel>> EditarLivro(LivroEditarDto dto)
+        {
+            var livro = await _mediator.Send(new UpdateLivroCommand(dto));
+            return Ok(livro);
+        }
+
+        [HttpDelete("ExcluirLivro/{idLivro:guid}")]
+        public async Task<ActionResult<LivroModel>> ExcluirLivro(Guid idLivro)
+        {
+            var livro = await _mediator.Send(new DeleteLivroCommand(idLivro));
+            return Ok(livro);
+        }
     }
-
-    [HttpGet("ListarLivros")]
-    public async Task<ActionResult<RespostaApiDto<List<LivroModel>>>> ListarLivros()
-    {
-        var livros = await _livroInterface.ListarLivros();
-        return Ok(livros);
-    }
-
-    [HttpGet("ListarLivroId/{idLivro:guid}")]
-    public async Task<ActionResult<RespostaApiDto<LivroModel>>> ListarLivroId(Guid idLivro)
-    {
-        var livros = await _livroInterface.ListarLivroId(idLivro);
-        return Ok(livros);
-    }
-
-    [HttpGet("ListarLivroPorIdAutor/{idAutor:guid}")]
-    public async Task<ActionResult<RespostaApiDto<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor)
-    {
-        var livro = await _livroInterface.ListarLivroPorIdAutor(idAutor);
-        return Ok(livro);
-    }
-
-    [HttpPost("CriarLivro")]
-    public async Task<ActionResult<RespostaApiDto<List<LivroModel>>>> CriarLivro(LivroCriarDto livroCriarDto)
-    {
-        var livros = await _livroInterface.CriarLivro(livroCriarDto);
-        return Ok(livros);
-    }
-
-    [HttpPut("EditarLivro")]
-    public async Task<ActionResult<RespostaApiDto<List<LivroModel>>>> EditarLivro(LivroEditarDto livroEditarDto)
-    {
-        var livros = await _livroInterface.EditarLivro(livroEditarDto);
-        return Ok(livros);
-    }
-
-    [HttpDelete("ExcluirLivro/{idLivro:guid}")]
-    public async Task<ActionResult<RespostaApiDto<List<LivroModel>>>> ExcluirLivro(Guid idLivro)
-    {
-        var livros = await _livroInterface.ExcluirLivro(idLivro);
-        return Ok(livros);
-    }
-
-
-
-
-
 }
