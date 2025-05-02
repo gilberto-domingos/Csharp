@@ -5,15 +5,15 @@ namespace ApiRestFull.Interfaces;
 
 public interface ILivro
 {
-    Task<RespostaApiDto<List<LivroModel>>> ListarLivros();
+    Task<List<LivroModel>> ListarLivros();
 
-    Task<RespostaApiDto<LivroModel>> ListarLivroId(Guid idLivro);
+    Task<LivroModel> ListarLivroId(Guid idLivro);
 
-    Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor);
+    Task<List<LivroModel>> ListarLivrosPorIdAutor(Guid idAutor);
 
-    Task<RespostaApiDto<List<LivroModel>>> CriarLivro(LivroCriarDto livroCriarDto);
+    Task<LivroModel> CriarLivro(LivroCriarDto livroCriarDto);
 
-    Task<RespostaApiDto<List<LivroModel>>> EditarLivro(LivroEditarDto livroEditarDto);
+    Task<LivroModel> EditarLivro(LivroEditarDto livroEditarDto);
 
-    Task<RespostaApiDto<List<LivroModel>>> ExcluirLivro(Guid idLivro);
+    Task<LivroModel> ExcluirLivro(Guid idLivro);
 }

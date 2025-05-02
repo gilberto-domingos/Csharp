@@ -1,12 +1,10 @@
-using ApiRestFull.DTOs;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Models;
-using ApiRestFull.Queries.Autor;
 using MediatR;
 
-namespace ApiRestFull.Handlers.Autor
+namespace ApiRestFull.Queries.Autor
 {
-    public class ListarAutorIdQueryHandler : IRequestHandler<ListarAutorIdQuery, RespostaApiDto<AutorModel>>
+    public class ListarAutorIdQueryHandler : IRequestHandler<ListarAutorIdQuery, AutorModel>
     {
         private readonly IAutor _autorService;
 
@@ -15,7 +13,7 @@ namespace ApiRestFull.Handlers.Autor
             _autorService = autorService;
         }
 
-        public async Task<RespostaApiDto<AutorModel>> Handle(ListarAutorIdQuery request, CancellationToken cancellationToken)
+        public async Task<AutorModel> Handle(ListarAutorIdQuery request, CancellationToken cancellationToken)
         {
             return await _autorService.ListarAutorId(request.IdAutor);
         }

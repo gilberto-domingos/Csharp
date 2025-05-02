@@ -6,16 +6,11 @@ namespace ApiRestFull.Interfaces;
 public interface IAutor
 {
 
-    Task<RespostaApiDto<List<AutorModel>>> ListarAutores();
-    Task<RespostaApiDto<AutorModel>> ListarAutorId(Guid idAutor);
-    Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(Guid idLivro);
-    Task<RespostaApiDto<List<AutorModel>>> CriarAutor(AutorCriarDto autorCriarDto);
-    Task<RespostaApiDto<List<AutorModel>>> EditarAutor(AutorEditarDto autorEditarDto);
-    Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(Guid idAutor);
-
-
-
-
-
+    Task<List<AutorModel>> ListarAutores();
+    Task<AutorModel> ListarAutorId(Guid idAutor);
+    Task<AutorModel> ListarAutorPorIdLivro(Guid idLivro);
+    Task<AutorModel> CriarAutor(AutorCriarDto autorCriarDto);
+    Task<AutorModel> EditarAutor(AutorEditarDto autorEditarDto);
+    Task<AutorModel> ExcluirAutor(Guid idAutor);
 
 }

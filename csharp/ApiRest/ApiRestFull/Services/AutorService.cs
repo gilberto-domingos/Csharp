@@ -1,92 +1,20 @@
 using ApiRestFull.Interfaces;
 using ApiRestFull.Models;
 using ApiRestFull.DTOs;
+using ApiRestFull.Exceptions;
 
-namespace ApiRestFull.Services;
-
-public class AutorService : IAutor
+namespace ApiRestFull.Services
 {
-    private readonly IAutorRepository _autorRepository;
-
-    public AutorService(IAutorRepository autorRepository)
+    public class AutorService : IAutor
     {
-        _autorRepository = autorRepository;
-    }
+        private readonly IAutorRepository _autorRepository;
 
-    public async Task<RespostaApiDto<List<AutorModel>>> ListarAutores()
-    {
-        var resposta = new RespostaApiDto<List<AutorModel>>();
-
-        try
+        public AutorService(IAutorRepository autorRepository)
         {
-            var autores = await _autorRepository.ListarAutores();
-            resposta.Dados = autores;
-            resposta.Mensagem = "Todos os autores foram coletados";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
+            _autorRepository = autorRepository;
         }
 
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<AutorModel>> ListarAutorId(Guid idAutor)
-    {
-        var resposta = new RespostaApiDto<AutorModel>();
-
-        try
-        {
-            var autor = await _autorRepository.ListarAutorPorId(idAutor);
-            if (autor == null)
-            {
-                resposta.Mensagem = "Nenhum registro encontrado!";
-                return resposta;
-            }
-
-            resposta.Dados = autor;
-            resposta.Mensagem = "Registro encontrado!";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<AutorModel>> ListarAutorPorIdLivro(Guid idLivro)
-    {
-        var resposta = new RespostaApiDto<AutorModel>();
-
-        try
-        {
-            var autor = await _autorRepository.ListarAutorPorIdLivro(idLivro);
-            if (autor == null)
-            {
-                resposta.Mensagem = "Nenhum registro encontrado!";
-                return resposta;
-            }
-
-            resposta.Dados = autor;
-            resposta.Mensagem = "Registro encontrado!";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<List<AutorModel>>> CriarAutor(AutorCriarDto autorCriarDto)
-    {
-        var resposta = new RespostaApiDto<List<AutorModel>>();
-
-        try
+        public async Task<AutorModel> CriarAutor(AutorCriarDto autorCriarDto)
         {
             var autor = new AutorModel
             {
@@ -94,24 +22,10 @@ public class AutorService : IAutor
                 Sobrenome = autorCriarDto.Sobrenome
             };
 
-            var autorCriado = await _autorRepository.CriarAutor(autor);
-            resposta.Dados = new List<AutorModel> { autorCriado };
-            resposta.Mensagem = "Autor cadastrado com sucesso!";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
+            return await _autorRepository.CriarAutor(autor);
         }
 
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<List<AutorModel>>> EditarAutor(AutorEditarDto autorEditarDto)
-    {
-        var resposta = new RespostaApiDto<List<AutorModel>>();
-
-        try
+        public async Task<AutorModel> EditarAutor(AutorEditarDto autorEditarDto)
         {
             var autor = new AutorModel
             {
@@ -120,40 +34,40 @@ public class AutorService : IAutor
                 Sobrenome = autorEditarDto.Sobrenome
             };
 
-            var autorAtualizado = await _autorRepository.EditarAutor(autor);
-            resposta.Dados = new List<AutorModel> { autorAtualizado };
-            resposta.Mensagem = "Autor atualizado com sucesso!";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
+            var atualizado = await _autorRepository.EditarAutor(autor);
+            if (atualizado == null)
+                throw new NotFoundException("Autor para edição não encontrado.");
+            return atualizado;
         }
 
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<List<AutorModel>>> ExcluirAutor(Guid idAutor)
-    {
-        var resposta = new RespostaApiDto<List<AutorModel>>();
-
-        try
+        public async Task<AutorModel> ExcluirAutor(Guid idAutor)
         {
-            var autor = await _autorRepository.ExcluirAutor(idAutor);
+            var resultado = await _autorRepository.ExcluirAutor(idAutor);
+            if (resultado == null)
+                throw new NotFoundException("Autor para exclusão não encontrado.");
+
+            return resultado;
+        }
+
+        public async Task<List<AutorModel>> ListarAutores()
+        {
+            return await _autorRepository.ListarAutores();
+        }
+
+        public async Task<AutorModel> ListarAutorId(Guid idAutor)
+        {
+            var autor = await _autorRepository.ListarAutorPorId(idAutor);
             if (autor == null)
-            {
-                resposta.Mensagem = "Nenhum registro encontrado!";
-                return resposta;
-            }
-
-            resposta.Mensagem = "Autor excluído com sucesso!";
+                throw new NotFoundException("Autor não encontrado.");
+            return autor;
         }
-        catch (Exception ex)
+
+        public async Task<AutorModel> ListarAutorPorIdLivro(Guid idLivro)
         {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
+            var autor = await _autorRepository.ListarAutorPorIdLivro(idLivro);
+            if (autor == null)
+                throw new NotFoundException("Autor não encontrado para o livro informado.");
+            return autor;
         }
-
-        return resposta;
     }
 }

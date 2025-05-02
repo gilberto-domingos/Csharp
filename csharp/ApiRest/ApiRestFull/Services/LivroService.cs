@@ -3,131 +3,61 @@ using ApiRestFull.Exceptions;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Models;
 
-namespace ApiRestFull.Services;
-
-public class LivroService : ILivro
+namespace ApiRestFull.Services
 {
-    private readonly ILivroRepository _livroRepository;
-
-    public LivroService(ILivroRepository livroRepository)
+    public class LivroService : ILivro
     {
-        _livroRepository = livroRepository;
-    }
+        private readonly ILivroRepository _livroRepository;
 
-    public async Task<RespostaApiDto<List<LivroModel>>> ListarLivros()
-    {
-        var resposta = new RespostaApiDto<List<LivroModel>>();
-        try
+        public LivroService(ILivroRepository livroRepository)
         {
-            var livros = await _livroRepository.ListarLivros();
-            resposta.Dados = livros;
-            resposta.Mensagem = "Todos os livros foram coletados com sucesso!";
+            _livroRepository = livroRepository;
         }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-        return resposta;
-    }
 
-    public async Task<RespostaApiDto<LivroModel>> ListarLivroId(Guid idLivro)
-    {
-        var resposta = new RespostaApiDto<LivroModel>();
-        try
+        public async Task<List<LivroModel>> ListarLivros()
+        {
+            return await _livroRepository.ListarLivros();
+        }
+
+        public async Task<LivroModel> ListarLivroId(Guid idLivro)
         {
             var livro = await _livroRepository.ListarLivroId(idLivro);
-            resposta.Dados = livro;
-            resposta.Mensagem = "Registro do livro encontrado com sucesso!";
+            if (livro == null)
+                throw new NotFoundException($"Livro com ID {idLivro} não encontrado.");
+
+            return livro;
         }
-        catch (Exception ex)
+
+        public async Task<List<LivroModel>> ListarLivrosPorIdAutor(Guid idAutor)
         {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
+            var livros = await _livroRepository.ListarLivrosPorIdAutor(idAutor);
+            if (livros == null || !livros.Any())
+                throw new NotFoundException($"Nenhum livro encontrado para o autor com ID {idAutor}.");
+
+            return livros;
         }
-        return resposta;
+
+        public async Task<LivroModel> CriarLivro(LivroCriarDto livroCriarDto)
+        {
+            return await _livroRepository.CriarLivro(livroCriarDto);
+        }
+
+        public async Task<LivroModel> EditarLivro(LivroEditarDto livroEditarDto)
+        {
+            var livroEditado = await _livroRepository.EditarLivro(livroEditarDto);
+            if (livroEditado == null)
+                throw new NotFoundException($"Livro com ID {livroEditarDto.IdLivro} não encontrado para edição.");
+
+            return livroEditado;
+        }
+
+        public async Task<LivroModel> ExcluirLivro(Guid idLivro)
+        {
+            var livroExcluido = await _livroRepository.ExcluirLivro(idLivro);
+            if (livroExcluido == null)
+                throw new NotFoundException($"Livro com ID {idLivro} não encontrado para exclusão.");
+
+            return livroExcluido;
+        }
     }
-
-    public async Task<RespostaApiDto<List<LivroModel>>> ListarLivroPorIdAutor(Guid idAutor)
-    {
-        var resposta = new RespostaApiDto<List<LivroModel>>();
-        try
-        {
-            var livro = await _livroRepository.ListarLivroPorIdAutor(idAutor);
-            resposta.Dados = livro;
-            resposta.Mensagem = "Registro encontrado com sucesso!";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<List<LivroModel>>> CriarLivro(LivroCriarDto livroCriarDto)
-    {
-        var resposta = new RespostaApiDto<List<LivroModel>>();
-        try
-        {
-            await _livroRepository.CriarLivro(livroCriarDto);
-            var livros = await _livroRepository.ListarLivros();
-            resposta.Dados = livros;
-            resposta.Mensagem = "Livro criado com sucesso!";
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<List<LivroModel>>> EditarLivro(LivroEditarDto livroEditarDto)
-    {
-        var resposta = new RespostaApiDto<List<LivroModel>>();
-        try
-        {
-            var livros = await _livroRepository.EditarLivro(livroEditarDto);
-
-            resposta.Dados = livros;
-            resposta.Mensagem = "Livro editado com sucesso!";
-        }
-        catch (NotFoundException ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = $"Erro ao editar livro: {ex.Message}";
-            resposta.Status = false;
-        }
-        return resposta;
-    }
-
-    public async Task<RespostaApiDto<List<LivroModel>>> ExcluirLivro(Guid idLivro)
-    {
-        var resposta = new RespostaApiDto<List<LivroModel>>();
-        try
-        {
-            var livros = await _livroRepository.ExcluirLivro(idLivro);
-
-            resposta.Dados = livros;
-            resposta.Mensagem = "Livro excluído com sucesso!";
-        }
-        catch (NotFoundException ex)
-        {
-            resposta.Mensagem = ex.Message;
-            resposta.Status = false;
-        }
-        catch (Exception ex)
-        {
-            resposta.Mensagem = $"Erro ao excluir livro: {ex.Message}";
-            resposta.Status = false;
-        }
-        return resposta;
-    }
-
-
 }

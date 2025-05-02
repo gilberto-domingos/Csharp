@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ApiRestFull.Commands.Autor
 {
-    public class ExcluirAutorCommand : IRequest<RespostaApiDto<List<AutorModel>>>
+    public class ExcluirAutorCommand : IRequest<AutorModel>
     {
         public Guid IdAutor { get; }
 
