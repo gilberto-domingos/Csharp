@@ -5,7 +5,7 @@ using ApiRestFull.Services;
 using ApiRestFull.Repositories;
 using System.Reflection;
 using MediatR;
-using ApiRestFull.Middlewares;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +30,10 @@ builder.Services.AddScoped<ILivro, LivroService>();
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ApiResponseEnvelopeFilter>();
+})
+.AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -92,8 +96,11 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseRouting();
-app.UseCors("ReactPolicy");
+
 app.UseHttpsRedirection();
+
+app.UseCors("ReactPolicy");
+
 app.UseAuthorization();
 
 app.MapControllers();
