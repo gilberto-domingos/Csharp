@@ -1,9 +1,9 @@
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Queries.Autor
 {
-    public class ListarAutoresQuery : IRequest<List<AutorModel>>
+    public class ListarAutoresQuery : IRequest<List<Entities.Autor>>
     {
     }
 }

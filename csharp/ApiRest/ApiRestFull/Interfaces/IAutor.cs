@@ -1,16 +1,16 @@
 using ApiRestFull.DTOs;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Interfaces;
 
 public interface IAutor
 {
 
-    Task<List<AutorModel>> ListarAutores();
-    Task<AutorModel> ListarAutorId(Guid idAutor);
-    Task<AutorModel> ListarAutorPorIdLivro(Guid idLivro);
-    Task<AutorModel> CriarAutor(AutorCriarDto autorCriarDto);
-    Task<AutorModel> EditarAutor(AutorEditarDto autorEditarDto);
-    Task<AutorModel> ExcluirAutor(Guid idAutor);
+    Task<List<Autor>> ListarAutores();
+    Task<Autor> ListarAutorId(Guid idAutor);
+    Task<Autor> ListarAutorPorIdLivro(Guid idLivro);
+    Task<Autor> CriarAutor(AutorCriarDto autorCriarDto);
+    Task<Autor> EditarAutor(AutorEditarDto autorEditarDto);
+    Task<Autor> ExcluirAutor(Guid idAutor);
 
 }

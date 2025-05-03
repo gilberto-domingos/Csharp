@@ -1,10 +1,10 @@
 using MediatR;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Handlers.Livro.Commands
 {
-    public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, LivroModel>
+    public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, Entities.Livro>
     {
         private readonly ILivro _livroService;
 
@@ -13,7 +13,7 @@ namespace ApiRestFull.Handlers.Livro.Commands
             _livroService = livroService;
         }
 
-        public async Task<LivroModel> Handle(DeleteLivroCommand request, CancellationToken cancellationToken)
+        public async Task<Entities.Livro> Handle(DeleteLivroCommand request, CancellationToken cancellationToken)
         {
             return await _livroService.ExcluirLivro(request.IdLivro);
         }

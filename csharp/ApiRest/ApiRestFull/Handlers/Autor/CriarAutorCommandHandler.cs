@@ -1,11 +1,11 @@
 using ApiRestFull.Commands.Autor;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Handlers.Autor
 {
-    public class CriarAutorCommandHandler : IRequestHandler<CriarAutorCommand, AutorModel>
+    public class CriarAutorCommandHandler : IRequestHandler<CriarAutorCommand, Entities.Autor>
     {
         private readonly IAutor _autorService;
 
@@ -14,7 +14,7 @@ namespace ApiRestFull.Handlers.Autor
             _autorService = autorService;
         }
 
-        public async Task<AutorModel> Handle(CriarAutorCommand request, CancellationToken cancellationToken)
+        public async Task<Entities.Autor> Handle(CriarAutorCommand request, CancellationToken cancellationToken)
         {
             return await _autorService.CriarAutor(request.AutorCriarDto);
         }

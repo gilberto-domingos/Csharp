@@ -1,7 +1,7 @@
 using ApiRestFull.DTOs;
 using ApiRestFull.Exceptions;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Services
 {
@@ -14,12 +14,12 @@ namespace ApiRestFull.Services
             _livroRepository = livroRepository;
         }
 
-        public async Task<List<LivroModel>> ListarLivros()
+        public async Task<List<Livro>> ListarLivros()
         {
             return await _livroRepository.ListarLivros();
         }
 
-        public async Task<LivroModel> ListarLivroId(Guid idLivro)
+        public async Task<Livro> ListarLivroId(Guid idLivro)
         {
             var livro = await _livroRepository.ListarLivroId(idLivro);
             if (livro == null)
@@ -28,7 +28,7 @@ namespace ApiRestFull.Services
             return livro;
         }
 
-        public async Task<List<LivroModel>> ListarLivrosPorIdAutor(Guid idAutor)
+        public async Task<List<Livro>> ListarLivrosPorIdAutor(Guid idAutor)
         {
             var livros = await _livroRepository.ListarLivrosPorIdAutor(idAutor);
             if (livros == null || !livros.Any())
@@ -37,12 +37,12 @@ namespace ApiRestFull.Services
             return livros;
         }
 
-        public async Task<LivroModel> CriarLivro(LivroCriarDto livroCriarDto)
+        public async Task<Livro> CriarLivro(LivroCriarDto livroCriarDto)
         {
             return await _livroRepository.CriarLivro(livroCriarDto);
         }
 
-        public async Task<LivroModel> EditarLivro(LivroEditarDto livroEditarDto)
+        public async Task<Livro> EditarLivro(LivroEditarDto livroEditarDto)
         {
             var livroEditado = await _livroRepository.EditarLivro(livroEditarDto);
             if (livroEditado == null)
@@ -51,7 +51,7 @@ namespace ApiRestFull.Services
             return livroEditado;
         }
 
-        public async Task<LivroModel> ExcluirLivro(Guid idLivro)
+        public async Task<Livro> ExcluirLivro(Guid idLivro)
         {
             var livroExcluido = await _livroRepository.ExcluirLivro(idLivro);
             if (livroExcluido == null)

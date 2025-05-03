@@ -1,10 +1,10 @@
 using MediatR;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Handlers.Livro.Commands
 {
-    public class UpdateLivroHandler : IRequestHandler<UpdateLivroCommand, LivroModel>
+    public class UpdateLivroHandler : IRequestHandler<UpdateLivroCommand, Entities.Livro>
     {
         private readonly ILivro _livroService;
 
@@ -13,7 +13,7 @@ namespace ApiRestFull.Handlers.Livro.Commands
             _livroService = livroService;
         }
 
-        public async Task<LivroModel> Handle(UpdateLivroCommand request, CancellationToken cancellationToken)
+        public async Task<Entities.Livro> Handle(UpdateLivroCommand request, CancellationToken cancellationToken)
         {
             return await _livroService.EditarLivro(request.LivroEditarDto);
         }

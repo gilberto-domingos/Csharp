@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Data
 {
@@ -7,8 +7,8 @@ namespace ApiRestFull.Data
     {
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options) { }
 
-        public DbSet<AutorModel> Autores { get; set; }
-        public DbSet<LivroModel> Livros { get; set; }
+        public DbSet<Autor> Autores { get; set; }
+        public DbSet<Livro> Livros { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace ApiRestFull.Data
             {
                 // Populando as tabelas na inicialização para teste dos end-points
                 context.Autores.AddRange(
-                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Machado", Sobrenome = "de Assis" },
-                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Clarice", Sobrenome = "Lispector" },
-                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Jorge", Sobrenome = "Amado" },
-                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Cecília", Sobrenome = "Meireles" },
-                    new AutorModel { IdAutor = Guid.NewGuid(), Nome = "Carlos", Sobrenome = "Drummond" }
+                    new Autor { IdAutor = Guid.NewGuid(), Nome = "Machado", Sobrenome = "de Assis" },
+                    new Autor { IdAutor = Guid.NewGuid(), Nome = "Clarice", Sobrenome = "Lispector" },
+                    new Autor { IdAutor = Guid.NewGuid(), Nome = "Jorge", Sobrenome = "Amado" },
+                    new Autor { IdAutor = Guid.NewGuid(), Nome = "Cecília", Sobrenome = "Meireles" },
+                    new Autor { IdAutor = Guid.NewGuid(), Nome = "Carlos", Sobrenome = "Drummond" }
                 );
 
                 context.SaveChanges();
@@ -41,11 +41,11 @@ namespace ApiRestFull.Data
                 var autores = context.Autores.ToList();
 
                 context.Livros.AddRange(
-    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Memórias", IdAutor = autores[0].IdAutor, Autor = autores[0] },
-    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Hora Estrelar", IdAutor = autores[1].IdAutor, Autor = autores[1] },
-    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Capitães", IdAutor = autores[2].IdAutor, Autor = autores[2] },
-    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Passaredo", IdAutor = autores[3].IdAutor, Autor = autores[3] },
-    new LivroModel { IdLivro = Guid.NewGuid(), Titulo = "Alguma Poesia", IdAutor = autores[4].IdAutor, Autor = autores[4] }
+    new Livro { IdLivro = Guid.NewGuid(), Titulo = "Memórias", IdAutor = autores[0].IdAutor, Autor = autores[0] },
+    new Livro { IdLivro = Guid.NewGuid(), Titulo = "Hora Estrelar", IdAutor = autores[1].IdAutor, Autor = autores[1] },
+    new Livro { IdLivro = Guid.NewGuid(), Titulo = "Capitães", IdAutor = autores[2].IdAutor, Autor = autores[2] },
+    new Livro { IdLivro = Guid.NewGuid(), Titulo = "Passaredo", IdAutor = autores[3].IdAutor, Autor = autores[3] },
+    new Livro { IdLivro = Guid.NewGuid(), Titulo = "Alguma Poesia", IdAutor = autores[4].IdAutor, Autor = autores[4] }
 );
 
                 context.SaveChanges();

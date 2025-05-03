@@ -1,10 +1,10 @@
 using MediatR;
 using ApiRestFull.DTOs;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Handlers.Commands
 {
-    public class CriarLivroCommand : IRequest<LivroModel>
+    public class CriarLivroCommand : IRequest<Entities.Livro>
     {
         public LivroCriarDto LivroCriarDto { get; set; }
 

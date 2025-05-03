@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiRestFull.Models;
+namespace ApiRestFull.Entities;
 
-public class LivroModel
+public class Livro
 {
     [Key]
     public Guid IdLivro { get; init; }
@@ -11,13 +11,13 @@ public class LivroModel
 
     public Guid IdAutor { get; init; }
 
-    public required AutorModel Autor { get; set; }
+    public required Autor Autor { get; set; }
 
 
-    public LivroModel() { }
+    public Livro() { }
 
 
-    public LivroModel(string titulo, Guid idAutor, AutorModel autor)
+    public Livro(string titulo, Guid idAutor, Autor autor)
     {
         IdLivro = Guid.NewGuid();
         Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo), "Todos os livros devem ter título!");
@@ -26,7 +26,7 @@ public class LivroModel
     }
 
     //Const.extra para testes automatizados, testes unitários, mocks ou imports com ID definido
-    public LivroModel(Guid idLivro, string titulo, Guid idAutor, AutorModel autor)
+    public Livro(Guid idLivro, string titulo, Guid idAutor, Autor autor)
     {
         IdLivro = idLivro;
         Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo));

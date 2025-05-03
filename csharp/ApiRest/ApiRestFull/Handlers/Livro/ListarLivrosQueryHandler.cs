@@ -1,10 +1,10 @@
 using MediatR;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Queries.Livro
 {
-    public class ListarLivrosQueryHandler : IRequestHandler<ListarLivrosQuery, List<LivroModel>>
+    public class ListarLivrosQueryHandler : IRequestHandler<ListarLivrosQuery, List<Entities.Livro>>
     {
         private readonly ILivro _livroService;
 
@@ -13,7 +13,7 @@ namespace ApiRestFull.Queries.Livro
             _livroService = livroService;
         }
 
-        public async Task<List<LivroModel>> Handle(ListarLivrosQuery request, CancellationToken cancellationToken)
+        public async Task<List<Entities.Livro>> Handle(ListarLivrosQuery request, CancellationToken cancellationToken)
         {
             return await _livroService.ListarLivros();
         }

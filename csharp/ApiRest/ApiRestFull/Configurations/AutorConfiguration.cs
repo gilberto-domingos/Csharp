@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Configurations
 {
-    public class AutorConfiguration : IEntityTypeConfiguration<AutorModel>
+    public class AutorConfiguration : IEntityTypeConfiguration<Autor>
     {
-        public void Configure(EntityTypeBuilder<AutorModel> autorBuilder)
+        public void Configure(EntityTypeBuilder<Autor> autorBuilder)
         {
             autorBuilder.HasKey(key => key.IdAutor);
 

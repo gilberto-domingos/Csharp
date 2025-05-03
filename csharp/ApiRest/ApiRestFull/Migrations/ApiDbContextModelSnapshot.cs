@@ -22,7 +22,7 @@ namespace ApiRestFull.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ApiRestFull.Models.AutorModel", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Autor", b =>
                 {
                     b.Property<Guid>("IdAutor")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace ApiRestFull.Migrations
                     b.ToTable("Autores");
                 });
 
-            modelBuilder.Entity("ApiRestFull.Models.LivroModel", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Livro", b =>
                 {
                     b.Property<Guid>("IdLivro")
                         .ValueGeneratedOnAdd()
@@ -64,9 +64,9 @@ namespace ApiRestFull.Migrations
                     b.ToTable("Livros");
                 });
 
-            modelBuilder.Entity("ApiRestFull.Models.LivroModel", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Livro", b =>
                 {
-                    b.HasOne("ApiRestFull.Models.AutorModel", "Autor")
+                    b.HasOne("ApiRestFull.Entities.Autor", "Autor")
                         .WithMany("Livros")
                         .HasForeignKey("IdAutor")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -75,7 +75,7 @@ namespace ApiRestFull.Migrations
                     b.Navigation("Autor");
                 });
 
-            modelBuilder.Entity("ApiRestFull.Models.AutorModel", b =>
+            modelBuilder.Entity("ApiRestFull.Entities.Autor", b =>
                 {
                     b.Navigation("Livros");
                 });
