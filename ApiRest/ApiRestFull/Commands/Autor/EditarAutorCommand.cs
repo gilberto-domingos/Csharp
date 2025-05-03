@@ -1,10 +1,10 @@
 using ApiRestFull.DTOs;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Commands.Autor
 {
-    public class EditarAutorCommand : IRequest<AutorModel>
+    public class EditarAutorCommand : IRequest<Entities.Autor>
     {
         public AutorEditarDto AutorEditarDto { get; set; }
 

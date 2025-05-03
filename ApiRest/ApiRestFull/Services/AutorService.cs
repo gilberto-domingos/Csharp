@@ -1,5 +1,5 @@
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using ApiRestFull.DTOs;
 using ApiRestFull.Exceptions;
 
@@ -14,9 +14,9 @@ namespace ApiRestFull.Services
             _autorRepository = autorRepository;
         }
 
-        public async Task<AutorModel> CriarAutor(AutorCriarDto autorCriarDto)
+        public async Task<Autor> CriarAutor(AutorCriarDto autorCriarDto)
         {
-            var autor = new AutorModel
+            var autor = new Autor
             {
                 Nome = autorCriarDto.Nome,
                 Sobrenome = autorCriarDto.Sobrenome
@@ -25,9 +25,9 @@ namespace ApiRestFull.Services
             return await _autorRepository.CriarAutor(autor);
         }
 
-        public async Task<AutorModel> EditarAutor(AutorEditarDto autorEditarDto)
+        public async Task<Autor> EditarAutor(AutorEditarDto autorEditarDto)
         {
-            var autor = new AutorModel
+            var autor = new Autor
             {
                 IdAutor = autorEditarDto.idAutor,
                 Nome = autorEditarDto.Nome,
@@ -40,7 +40,7 @@ namespace ApiRestFull.Services
             return atualizado;
         }
 
-        public async Task<AutorModel> ExcluirAutor(Guid idAutor)
+        public async Task<Autor> ExcluirAutor(Guid idAutor)
         {
             var resultado = await _autorRepository.ExcluirAutor(idAutor);
             if (resultado == null)
@@ -49,12 +49,12 @@ namespace ApiRestFull.Services
             return resultado;
         }
 
-        public async Task<List<AutorModel>> ListarAutores()
+        public async Task<List<Autor>> ListarAutores()
         {
             return await _autorRepository.ListarAutores();
         }
 
-        public async Task<AutorModel> ListarAutorId(Guid idAutor)
+        public async Task<Autor> ListarAutorId(Guid idAutor)
         {
             var autor = await _autorRepository.ListarAutorPorId(idAutor);
             if (autor == null)
@@ -62,7 +62,7 @@ namespace ApiRestFull.Services
             return autor;
         }
 
-        public async Task<AutorModel> ListarAutorPorIdLivro(Guid idLivro)
+        public async Task<Autor> ListarAutorPorIdLivro(Guid idLivro)
         {
             var autor = await _autorRepository.ListarAutorPorIdLivro(idLivro);
             if (autor == null)

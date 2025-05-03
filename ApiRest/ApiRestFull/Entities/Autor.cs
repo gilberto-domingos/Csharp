@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace ApiRestFull.Models;
+namespace ApiRestFull.Entities;
 
-public class AutorModel
+public class Autor
 {
     [Key]
     public Guid IdAutor { get; init; }
@@ -13,11 +13,11 @@ public class AutorModel
     public required string Sobrenome { get; set; }
 
     [JsonIgnore]
-    public ICollection<LivroModel> Livros { get; set; } = new List<LivroModel>();
+    public ICollection<Livro> Livros { get; set; } = new List<Livro>();
 
-    public AutorModel() { }
+    public Autor() { }
 
-    public AutorModel(string nome, string sobrenome)
+    public Autor(string nome, string sobrenome)
     {
         IdAutor = Guid.NewGuid();
         Nome = nome ?? throw new ArgumentNullException(nameof(nome));
@@ -25,7 +25,7 @@ public class AutorModel
     }
 
     //Const.extra para testes automatizados, testes unitários, mocks ou imports com ID definido
-    public AutorModel(Guid idAutor, string nome, string sobrenome)
+    public Autor(Guid idAutor, string nome, string sobrenome)
     {
         IdAutor = idAutor;
         Nome = nome ?? throw new ArgumentNullException(nameof(nome));

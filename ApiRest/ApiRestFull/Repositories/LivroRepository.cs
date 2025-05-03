@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ApiRestFull.Data;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using ApiRestFull.DTOs;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Exceptions;
@@ -16,12 +16,12 @@ public class LivroRepository : ILivroRepository
         _context = context;
     }
 
-    public async Task<List<LivroModel>> ListarLivros()
+    public async Task<List<Livro>> ListarLivros()
     {
         return await _context.Livros.Include(l => l.Autor).ToListAsync();
     }
 
-    public async Task<LivroModel> ListarLivroId(Guid idLivro)
+    public async Task<Livro> ListarLivroId(Guid idLivro)
     {
         var livro = await _context.Livros
             .Include(l => l.Autor)
@@ -33,7 +33,7 @@ public class LivroRepository : ILivroRepository
         return livro;
     }
 
-    public async Task<List<LivroModel>> ListarLivrosPorIdAutor(Guid idAutor)
+    public async Task<List<Livro>> ListarLivrosPorIdAutor(Guid idAutor)
     {
         var livros = await _context.Livros
             .Include(l => l.Autor)
@@ -43,7 +43,7 @@ public class LivroRepository : ILivroRepository
         return livros;
     }
 
-    public async Task<LivroModel> CriarLivro(LivroCriarDto livroCriarDto)
+    public async Task<Livro> CriarLivro(LivroCriarDto livroCriarDto)
     {
         var autor = await _context.Autores
             .FirstOrDefaultAsync(a => a.IdAutor == livroCriarDto.Autor.IdAutor);
@@ -51,7 +51,7 @@ public class LivroRepository : ILivroRepository
         if (autor == null)
             throw new NotFoundException($"Autor com ID {livroCriarDto.Autor.IdAutor} não encontrado.");
 
-        var livro = new LivroModel
+        var livro = new Livro
         {
             Titulo = livroCriarDto.Titulo,
             Autor = autor
@@ -63,7 +63,7 @@ public class LivroRepository : ILivroRepository
         return livro;
     }
 
-    public async Task<LivroModel> EditarLivro(LivroEditarDto livroEditarDto)
+    public async Task<Livro> EditarLivro(LivroEditarDto livroEditarDto)
     {
         var livro = await _context.Livros
             .Include(l => l.Autor)
@@ -87,7 +87,7 @@ public class LivroRepository : ILivroRepository
         return livro;
     }
 
-    public async Task<LivroModel> ExcluirLivro(Guid idLivro)
+    public async Task<Livro> ExcluirLivro(Guid idLivro)
     {
         var livro = await _context.Livros
             .FirstOrDefaultAsync(l => l.IdLivro == idLivro);

@@ -1,7 +1,7 @@
 using MediatR;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Handlers.Livro.Queries
 {
-    public record ListarLivrosPorIdAutorQuery(Guid IdAutor) : IRequest<List<LivroModel>>;
+    public record ListarLivrosPorIdAutorQuery(Guid IdAutor) : IRequest<List<Entities.Livro>>;
 }

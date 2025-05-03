@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ApiRestFull.Data;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using ApiRestFull.Exceptions;
 
 namespace ApiRestFull.Repositories;
@@ -15,12 +15,12 @@ public class AutorRepository : IAutorRepository
         _context = context;
     }
 
-    public async Task<List<AutorModel>> ListarAutores()
+    public async Task<List<Autor>> ListarAutores()
     {
         return await _context.Autores.ToListAsync();
     }
 
-    public async Task<AutorModel> ListarAutorPorId(Guid idAutor)
+    public async Task<Autor> ListarAutorPorId(Guid idAutor)
     {
         var autor = await _context.Autores
                                   .FirstOrDefaultAsync(livro => livro.IdAutor == idAutor);
@@ -31,7 +31,7 @@ public class AutorRepository : IAutorRepository
         return autor;
     }
 
-    public async Task<AutorModel> ListarAutorPorIdLivro(Guid idLivro)
+    public async Task<Autor> ListarAutorPorIdLivro(Guid idLivro)
     {
         var livro = await _context.Livros
                                   .Include(l => l.Autor)
@@ -44,21 +44,21 @@ public class AutorRepository : IAutorRepository
     }
 
 
-    public async Task<AutorModel> CriarAutor(AutorModel autor)
+    public async Task<Autor> CriarAutor(Autor autor)
     {
         _context.Add(autor);
         await _context.SaveChangesAsync();
         return autor;
     }
 
-    public async Task<AutorModel> EditarAutor(AutorModel autor)
+    public async Task<Autor> EditarAutor(Autor autor)
     {
         _context.Update(autor);
         await _context.SaveChangesAsync();
         return autor;
     }
 
-    public async Task<AutorModel> ExcluirAutor(Guid idAutor)
+    public async Task<Autor> ExcluirAutor(Guid idAutor)
     {
         var autor = await _context.Autores.FirstOrDefaultAsync(a => a.IdAutor == idAutor);
         if (autor == null)

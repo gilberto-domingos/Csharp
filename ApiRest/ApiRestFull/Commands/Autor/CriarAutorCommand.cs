@@ -1,10 +1,10 @@
 using ApiRestFull.DTOs;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Commands.Autor
 {
-    public class CriarAutorCommand : IRequest<AutorModel>
+    public class CriarAutorCommand : IRequest<Entities.Autor>
     {
         public AutorCriarDto AutorCriarDto { get; }
 

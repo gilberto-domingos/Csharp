@@ -1,11 +1,11 @@
 using ApiRestFull.Commands.Autor;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Handlers.Autor
 {
-    public class EditarAutorCommandHandler : IRequestHandler<EditarAutorCommand, AutorModel>
+    public class EditarAutorCommandHandler : IRequestHandler<EditarAutorCommand, Entities.Autor>
     {
         private readonly IAutor _autorService;
 
@@ -14,7 +14,7 @@ namespace ApiRestFull.Handlers.Autor
             _autorService = autorService;
         }
 
-        public async Task<AutorModel> Handle(EditarAutorCommand request, CancellationToken cancellationToken)
+        public async Task<Entities.Autor> Handle(EditarAutorCommand request, CancellationToken cancellationToken)
         {
             return await _autorService.EditarAutor(request.AutorEditarDto);
         }

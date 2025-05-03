@@ -1,13 +1,13 @@
-using ApiRestFull.Models;
+using ApiRestFull.Entities;
 
 namespace ApiRestFull.Interfaces;
 
 public interface IAutorRepository
 {
-    Task<List<AutorModel>> ListarAutores();
-    Task<AutorModel> ListarAutorPorId(Guid idAutor);
-    Task<AutorModel> ListarAutorPorIdLivro(Guid idLivro);
-    Task<AutorModel> CriarAutor(AutorModel autor);
-    Task<AutorModel> EditarAutor(AutorModel autor);
-    Task<AutorModel> ExcluirAutor(Guid idAutor);
+    Task<List<Autor>> ListarAutores();
+    Task<Autor> ListarAutorPorId(Guid idAutor);
+    Task<Autor> ListarAutorPorIdLivro(Guid idLivro);
+    Task<Autor> CriarAutor(Autor autor);
+    Task<Autor> EditarAutor(Autor autor);
+    Task<Autor> ExcluirAutor(Guid idAutor);
 }
