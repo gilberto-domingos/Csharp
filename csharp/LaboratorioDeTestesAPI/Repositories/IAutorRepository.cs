@@ -1,16 +1,13 @@
-using LaboratorioDeTestesAPI.Dtos;
 using LaboratorioDeTestesAPI.Entities;
 
 namespace LaboratorioDeTestesAPI.Interfaces;
 
-public interface IAutor
+public interface IAutorRepository
 {
-
     Task<List<Autor>> ListarAutores();
-    Task<Autor> ListarAutorId(Guid idAutor);
+    Task<Autor> ListarAutorPorId(Guid idAutor);
     Task<Autor> ListarAutorPorIdLivro(Guid idLivro);
-    Task<Autor> CriarAutor(AutorCriarDto autorCriarDto);
-    Task<Autor> EditarAutor(AutorEditarDto autorEditarDto);
+    Task<Autor> CriarAutor(Autor autor);
+    Task<Autor> EditarAutor(Autor autor);
     Task<Autor> ExcluirAutor(Guid idAutor);
-
 }

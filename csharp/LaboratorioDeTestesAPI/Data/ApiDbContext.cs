@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using LaboratorioDeTestesAPI.Configurations;
+using LaboratorioDeTestesAPI.Entities;
 
 namespace LaboratorioDeTestesAPI.Data
 {
@@ -10,6 +11,10 @@ namespace LaboratorioDeTestesAPI.Data
         }
 
         public DbSet<Car> Cars { get; init; }
+        public DbSet<Autor> Autores { get; set; }
+        
+        public DbSet<Livro> Livros { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
