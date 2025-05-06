@@ -1,17 +1,36 @@
 ## Back-end => C# .Net 
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
 
-- #### Conteúdo :
-- POO - Programação Orientada a Objetos.
-- Docker(containers/comunicação entre containers) e RabbitMq(Message Broker) e Microserviços.
-- Uso de Expressões Lambadas.
-- Cultura de testes, para aplicações em cenário real
 - #### Projetos : 
 - ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions + POO + SOLID, robusta, escalável de fácil manutenção.
 - Testando entidades no DDD.
 - Teste unitários, XUnit.
 
+- #### Conteúdo :
+- POO - Programação Orientada a Objetos.
+- Padrões Design Patterns
+- Padrões SOLID 
+- ApiRestFull robusta, desacoplada e autocoesão.
+- SWAGGER Swashbuckle.AspNetCore 
+- Docker(containers/comunicação entre containers) e RabbitMq(Message Broker) e Microserviços.
+- Uso de Expressões Lambadas.
+- Cultura de testes, para aplicações em cenário real
+
 * Descrições :
+
+- ### ==> ApiRestFull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
+- Desenvolvimento ApiRestFull (.Net + React + SqlServer + RabbitMq) e containerização Docker.
+- Organização de estrutura -> Models, Interfaces, Services, Controllers, DTOs, Data, DbContext, etc.
+- Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate. 
+- SWAGGER - Configuração e teste de end-points na web envio requisições HTTP (GET, POST, PUT, DELETE). 
+- CRUD-Create,Read,Update,Delete, Injeção de dependência(ILogger,RequestDelegate) padrões ASP.NET Core.
+- Repository padrão (Repository Pattern).
+- Exceptions, ExceptionMiddleware para tratamento global.
+- Action Filter - ApiResponseEnvelopeFilter, Padrão global de resposta.
+- MediatR (MediatR Pattern), Commands, Handlers e Queries.
+- CQRS (Command Query Responsibility Segregation).
+- Dockerfiles, docker-compose.yml,configuração dos containers, conexão e comunicação entre os containers.
+- Configuração de .env (variáveis de ambiente) - Portas, connection strings, secrets, etc.
 
 - ### ==> Padrões de Projetos (Design Patterns) 
 - Factory Method -> (Criacional) : Oferece uma interface para criar objetos, permitindo que subclasses decidam qual classe concreta será instanciada, usar quando você não quer depender diretamente de classes concretas.
@@ -32,24 +51,6 @@
 - ### ==> TESTES UNITÁRIOS
 - -> Testando entidades no DDD - As entidades no (Domain-Driven Design) são mais do que apenas classes elas encapsulam comportamento e regras de negócio que precisam ser validadas corretamente.
 - -> Testes Unitários com XUnit - framework de testes automatizados para projetos .NET C# mais usado no momento, desenvolver escrever, organizar e executar testes unitários no código.
-- ### ==> ApiRestFull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
-- Desenvolvimento ApiRestFull (.Net + React + SqlServer + RabbitMq) e containerização Docker.
-- Organização de estrutura -> Models, Interfaces, Services, Controllers, DTOs, Data, DbContext, etc.
-- Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate. 
-- SWAGGER - Configuração e teste de end-points na web envio requisições HTTP (GET, POST, PUT, DELETE). 
-- CRUD-Create,Read,Update,Delete, Injeção de dependência(ILogger,RequestDelegate) padrões ASP.NET Core.
-- Repository padrão (Repository Pattern).
-- Exceptions, ExceptionMiddleware para tratamento global.
-- Action Filter - ApiResponseEnvelopeFilter, Padrão global de resposta.
-- MediatR (MediatR Pattern), Commands, Handlers e Queries.
-- CQRS (Command Query Responsibility Segregation).
-- Dockerfiles, docker-compose.yml,configuração dos containers, conexão e comunicação entre os containers.
-- Configuração de .env (variáveis de ambiente) - Portas, connection strings, secrets, etc.
-
-
-
-
- 
 
 
 ----------------------------------------------------------------------------
