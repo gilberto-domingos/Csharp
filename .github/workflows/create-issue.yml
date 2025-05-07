@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Create a new GitHub issue
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ github.ref_name }}
         run: |
-          BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+          TITLE="Tarefa de implementação - $(echo $BRANCH_NAME | sed 's/\// /g')"
 
-          curl -X POST -H "Authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
-          -d '{"title":"Tarefa de implementação - '$(echo $BRANCH_NAME | sed 's/\// /g')'"}' \
-          "https://api.github.com/repos/gilberto-domingos/Csharp/issues"
+          curl -X POST -H "Authorization: token $MY_GITHUB_TOKEN" \
+               -d "{\"title\":\"$TITLE\"}" \
+               "https://api.github.com/repos/gilberto-domingos/Csharp/issues"
