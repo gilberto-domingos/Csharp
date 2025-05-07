@@ -20,4 +20,4 @@ jobs:
 
           curl -X POST -H "Authorization: token $MY_GITHUB_TOKEN" \
                -d "{\"title\":\"$TITLE\"}" \
-               "https://api.github.com/repos/gilberto-domingos/Csharp/issues"
+               "https://api.github.com/repos/gilberto-domingos/Csharp/issues"  
