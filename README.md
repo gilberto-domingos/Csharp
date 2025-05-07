@@ -2,7 +2,7 @@
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
 
 - #### Projetos : 
-- ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions + POO + SOLID, robusta, escalável de fácil manutenção.
+- ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions + POO + SOLID, robusta, escalável e fácil manutenção.
 - Testando entidades no DDD.
 - Teste unitários, XUnit.
 
@@ -14,9 +14,10 @@
 - SWAGGER Swashbuckle.AspNetCore 
 - Docker(containers/comunicação entre containers) e RabbitMq(Message Broker) e Microserviços.
 - Uso de Expressões Lambadas.
-- Cultura de testes, para aplicações em cenário real
+- Cultura de testes, para aplicações em cenário real.
+- Automação de issue workflows Github.
 
-* Descrições :
+- #### Descrições :
 
 - ### ==> ApiRestFull, princípio (Representational State Transfer) -> Front-end, Back-end e Servidor são separados e se comunicam via requisições HTTP.
 - Desenvolvimento ApiRestFull (.Net + React + SqlServer + RabbitMq) e containerização Docker.
