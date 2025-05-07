@@ -5,6 +5,7 @@ on:
     branches:
       - 'main'
       - 'feature/*'
+      - 'replay/*'
 
 jobs:
   create-issue:
