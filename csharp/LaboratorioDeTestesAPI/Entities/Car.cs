@@ -1,7 +1,7 @@
 public class Car
 {
     public Guid Id { get; init; }
-    public string Name { get; init; }
+    public string Name { get; init; } = string.Empty;
     public int Chassi { get; init; }
 
     public Car() { }
