@@ -15,22 +15,26 @@ namespace LaboratorioDeTestesAPI.Controllers
             _carInterface = carInterface;
         }
 
-        [HttpGet("validate/{id:guid}")]
+        [HttpGet("validate/{id:guid}", Name = "ValidateChassi")]
         public async Task<IActionResult> ValidateChassi(Guid id, CancellationToken cancelToken)
         {
             bool isValid = await _carInterface.CheckIfValidAsync(id, cancelToken);
             return Ok(new { IsValid = isValid });
         }
 
-        [HttpPost]
+        [HttpPost(Name = "CreateCarAsync")]
         public async Task<IActionResult> CreateAsync(CarDto carDto)
         {
             var createdCar = await _carInterface.CreateAsync(carDto);
 
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = createdCar.Id }, createdCar);
+            if (createdCar == null)
+                return NotFound();
+
+            return Ok(createdCar);
+
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id:guid}", Name = "GetByIdAsync")]
         public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancelToken)
         {
             var car = await _carInterface.GetByIdAsync(id, cancelToken);
