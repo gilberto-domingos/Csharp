@@ -39,6 +39,7 @@ builder.Services.AddScoped<ILivro, LivroService>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 builder.Services.AddScoped<ICar, CarChassiValidatorService>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -75,7 +76,11 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApiDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
+
     ApiDbContext.Initialize(scope.ServiceProvider, context);
+    await seeder.SeedAsync(context, logger);
 }
 
 app.UseCors("ReactPolicy");
