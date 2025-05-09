@@ -1,6 +1,5 @@
 using MediatR;
 using LaboratorioDeTestesAPI.Interfaces;
-using LaboratorioDeTestesAPI.Entities;
 
 namespace LaboratorioDeTestesAPI.Queries.Livro
 {
