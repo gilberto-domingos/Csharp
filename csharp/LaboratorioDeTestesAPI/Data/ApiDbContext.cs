@@ -12,7 +12,6 @@ namespace LaboratorioDeTestesAPI.Data
 
         public DbSet<Car> Cars { get; init; }
         public DbSet<Autor> Autores { get; set; }
-        
         public DbSet<Livro> Livros { get; set; }
 
 
