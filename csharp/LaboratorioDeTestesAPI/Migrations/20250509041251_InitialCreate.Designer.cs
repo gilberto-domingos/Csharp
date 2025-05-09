@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaboratorioDeTestesAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20250507175902_AddCarTable")]
-    partial class AddCarTable
+    [Migration("20250509041251_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,13 +83,11 @@ namespace LaboratorioDeTestesAPI.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdAutor");
 
@@ -102,17 +100,19 @@ namespace LaboratorioDeTestesAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("AutorIdAutor")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("IdAutor")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdLivro");
 
-                    b.HasIndex("IdAutor");
+                    b.HasIndex("AutorIdAutor");
 
                     b.ToTable("Livros");
                 });
@@ -121,7 +121,7 @@ namespace LaboratorioDeTestesAPI.Migrations
                 {
                     b.HasOne("LaboratorioDeTestesAPI.Entities.Autor", "Autor")
                         .WithMany("Livros")
-                        .HasForeignKey("IdAutor")
+                        .HasForeignKey("AutorIdAutor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
