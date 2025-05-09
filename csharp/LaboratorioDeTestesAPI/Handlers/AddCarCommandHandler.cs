@@ -11,7 +11,7 @@ internal class AddCarCommandHandler(ICar carChassiValidatorService, ApiDbContext
 {
     public async Task<CarDto> Handle(AddCarCommand request, CancellationToken cancellationToken)
     {
-        // Generating Id
+
         var id = Guid.NewGuid();
 
         var isValidChassi = await carChassiValidatorService.CheckIfValidAsync(id, cancellationToken);
