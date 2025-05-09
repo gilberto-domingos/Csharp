@@ -1,6 +1,5 @@
 using MediatR;
 using LaboratorioDeTestesAPI.Dtos;
-using LaboratorioDeTestesAPI.Entities;
 
 namespace LaboratorioDeTestesAPI.Handlers.Commands
 {
