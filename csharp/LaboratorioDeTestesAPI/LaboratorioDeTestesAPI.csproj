@@ -4,6 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo> 
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,13 @@
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+  <AssemblyAttibute Include="System.Runtime.CompileServices.InternalVisibleTo">
+     <Parameter1>$(AssemblyName).Tests</Parameter1>
+  </AssemblyAttibute>
+  </ItemGroup>
+  
 </Project>
