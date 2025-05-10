@@ -2,7 +2,7 @@
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
 
 - #### Projetos : 
-- ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions, Migrations + POO + SOLID, robusta, escalável e fácil manutenção.
+- ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions, Migrations + POO + SOLID + Docker, robusta, escalável e fácil manutenção.
 - Testando entidades no DDD.
 - Teste unitários, XUnit.
 
