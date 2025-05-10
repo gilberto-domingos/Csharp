@@ -1,0 +1,6 @@
+@LaboratorioDeTestesAPI_HostAddress = http://localhost:5006
+
+GET {{LaboratorioDeTestes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
