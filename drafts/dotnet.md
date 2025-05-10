@@ -9,7 +9,13 @@ dotnet add LaboratorioDeTestes.Tests package FluentAssertions
 dotnet add LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.SqlServer
 
 dotnet sln add LaboratorioDeTestes.Tests/LaboratorioDeTestes.Tests.csproj
+
 dotnet add LaboratorioDeTestes.Tests reference LaboratorioDeTestesAPI.csproj
+dotnet add reference ../LaboratorioDeTestesAPI.csproj
+
+dotnet test
+dotnet test -v n
+
 
 * dotnet remove LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.InMemory
 * dotnet add LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.InMemory
