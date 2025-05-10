@@ -1,0 +1,21 @@
+using LaboratorioDeTestes.Interfaces;
+using MediatR;
+using LaboratorioDeTestes.Entities;
+
+namespace LaboratorioDeTestes.Handlers.Livro.Commands
+{
+    public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, Entities.Livro>
+    {
+        private readonly ILivro _livroService;
+
+        public DeleteLivroHandler(ILivro livroService)
+        {
+            _livroService = livroService;
+        }
+
+        public async Task<Entities.Livro> Handle(DeleteLivroCommand request, CancellationToken cancellationToken)
+        {
+            return await _livroService.ExcluirLivro(request.IdLivro);
+        }
+    }
+}
