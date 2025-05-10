@@ -1,5 +1,22 @@
 # Rascunho de comandos .Net :
 
+dotnet new xunit -n LaboratorioDeTestes.Tests
+dotnet sln add LaboratorioDeTestes.Tests/LaboratorioDeTestes.Tests.csproj
+dotnet add LaboratorioDeTestes.Tests package xunit
+dotnet add LaboratorioDeTestes.Tests package xunit.runner.visualstudio
+dotnet add LaboratorioDeTestes.Tests package Moq
+dotnet add LaboratorioDeTestes.Tests package FluentAssertions
+dotnet add LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.SqlServer
+
+dotnet sln add LaboratorioDeTestes.Tests/LaboratorioDeTestes.Tests.csproj
+dotnet add LaboratorioDeTestes.Tests reference LaboratorioDeTestesAPI.csproj
+
+* dotnet remove LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.InMemory
+* dotnet add LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.InMemory
+
+dotnet add package coverlet.collector
+dotnet test /p:CollectCoverage=true
+
 dotnet list package
 
 rm -rf Migrations
