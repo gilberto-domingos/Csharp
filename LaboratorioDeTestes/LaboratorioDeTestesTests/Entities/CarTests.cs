@@ -8,6 +8,7 @@ public sealed class CarTests
 {
     [Theory]
     [InlineData("Ferrari")]
+    [InlineData("Fusca")]
     public void Constructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly2(string expectedName)
     {
         //Arr - GivenAllParameters
