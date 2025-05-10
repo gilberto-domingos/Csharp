@@ -1,4 +1,5 @@
 using LaboratorioDeTestes.Entities;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Xunit;
 
 namespace LaboratorioDeTestes.Tests.Entities;
@@ -22,5 +23,16 @@ public sealed class CarTests
         Assert.Equal(expectedId, car.Id);
         Assert.Equal(expectedName, car.Name);
         Assert.Equal(expectedChassi, car.Chassi);
+    }
+
+    [Fact]
+    public void Constructor_GivenEmptyConstructorParams_ThenShouldSetDefaultValues()
+    {
+        // Act
+        var car = new Car();
+
+        // Assert 
+        Assert.Equal(Guid.Empty, car.Id);
+        Assert.Equal("", car.Name);
     }
 }
