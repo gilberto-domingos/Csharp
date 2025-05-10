@@ -6,6 +6,21 @@ namespace LaboratorioDeTestes.Tests.Entities;
 
 public sealed class CarTests
 {
+    [Theory]
+    [InlineData("Ferrari")]
+    public void Constructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly2(string expectedName)
+    {
+        //Arr - GivenAllParameters
+        var expectedId = Guid.NewGuid();
+
+        //Act
+        var car = new Car(expectedId, expectedName);
+
+        //Assert - ShouldSetThePropertiesCorrectly
+        Assert.Equal(expectedId, car.Id);
+        Assert.Equal(expectedName, car.Name);
+    }
+
     [Fact]
     public void Constructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly()
     {
@@ -14,10 +29,8 @@ public sealed class CarTests
         var expectedName = "Corolla";
         var expectedChassi = 345432;
 
-
         //Act
         var car = new Car(expectedId, expectedName, expectedChassi);
-
 
         //Assert - ShouldSetThePropertiesCorrectly
         Assert.Equal(expectedId, car.Id);
