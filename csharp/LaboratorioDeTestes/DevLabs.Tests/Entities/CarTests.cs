@@ -1,14 +1,35 @@
-using LaboratorioDeTestes.Entities;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Xunit;
+using Bogus;
 
-namespace LaboratorioDeTestes.Tests.Entities;
+
+using DevLabs.Api.Entities;
+
+namespace DevLabs.Tests.Entities;
 
 public sealed class CarTests
 {
+    private readonly Faker _faker = new Faker("pt_BR");
+
+
+    [Fact]
+    public void Constructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly3()
+    {
+        // BOGUS
+        //Arr - GivenAllParameters
+        var expectedId = Guid.NewGuid();
+        var expectedName = _faker.Vehicle.Model();
+
+        //Act
+        var car = new Car(expectedId, expectedName);
+
+        //Assert - ShouldSetThePropertiesCorrectly
+        Assert.Equal(expectedId, car.Id);
+        Assert.Equal(expectedName, car.Name);
+    }
+
+
+
     [Theory]
     [InlineData("Ferrari")]
-    [InlineData("Fusca")]
     public void Constructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly2(string expectedName)
     {
         //Arr - GivenAllParameters
@@ -47,6 +68,7 @@ public sealed class CarTests
 
         // Assert 
         Assert.Equal(Guid.Empty, car.Id);
-        Assert.Equal("", car.Name);
+        Assert.Equal(string.Empty, car.Name);
+        Assert.Equal(0, car.Chassi);
     }
 }
