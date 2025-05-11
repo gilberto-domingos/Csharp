@@ -51,7 +51,7 @@
 - -> (D) Dependency Inversion Principle - Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações. Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações. Objetivo é reduzir o acoplamento entre os módulos do sistema.
 
 - ### ==> Laboratorio de Testes
-- -> Testando construtores da classe Car.
+- -> DevLabs.API - para experimentar testes unitário, de cobertura, de integração e automatizado.
 - -> Testando entidades no DDD - As entidades no (Domain-Driven Design) são mais do que apenas classes elas encapsulam comportamento e regras de negócio que precisam ser validadas corretamente.
 - -> Testes Unitários com XUnit - framework de testes automatizados para projetos .NET C# mais usado no momento, desenvolver escrever, organizar e executar testes unitários no código.
 
