@@ -3,6 +3,7 @@
 
 - #### Projetos : 
 - ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions, Migrations + POO + SOLID + Docker, robusta, escalável e fácil manutenção.
+- Laboratorio de Testes - projeto para praticar testes unitários, de cobertura e de integração.
 - Testando entidades no DDD.
 - Teste unitários, XUnit.
 
@@ -49,7 +50,8 @@
 - -> (I) Interface Segregation Principle - Cliente não deve ser forçado a depender de métodos que não utiliza. Objetivo é evitar interfaces grandes e genéricas demais. Dividir em interfaces menores e mais específicas, conforme a responsabilidade da classe.
 - -> (D) Dependency Inversion Principle - Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações. Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações. Objetivo é reduzir o acoplamento entre os módulos do sistema.
 
-- ### ==> TESTES UNITÁRIOS
+- ### ==> Laboratorio de Testes
+- -> Testando construtores da classe Car.
 - -> Testando entidades no DDD - As entidades no (Domain-Driven Design) são mais do que apenas classes elas encapsulam comportamento e regras de negócio que precisam ser validadas corretamente.
 - -> Testes Unitários com XUnit - framework de testes automatizados para projetos .NET C# mais usado no momento, desenvolver escrever, organizar e executar testes unitários no código.
 
