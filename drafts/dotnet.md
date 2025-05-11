@@ -1,17 +1,20 @@
 # Rascunho de comandos .Net :
 
-dotnet new xunit -n LaboratorioDeTestes.Tests
-dotnet sln add LaboratorioDeTestes.Tests/LaboratorioDeTestes.Tests.csproj
-dotnet add LaboratorioDeTestes.Tests package xunit
-dotnet add LaboratorioDeTestes.Tests package xunit.runner.visualstudio
-dotnet add LaboratorioDeTestes.Tests package Moq
-dotnet add LaboratorioDeTestes.Tests package FluentAssertions
-dotnet add LaboratorioDeTestes.Tests package Microsoft.EntityFrameworkCore.SqlServer
 
-dotnet sln add LaboratorioDeTestes.Tests/LaboratorioDeTestes.Tests.csproj
 
-dotnet add LaboratorioDeTestes.Tests reference LaboratorioDeTestesAPI.csproj
-dotnet add reference ../LaboratorioDeTestesAPI.csproj
+dotnet new sln -n LaboratorioDeTestes
+dotnet sln LaboratorioDeTestes.sln add DevLabs.Api/DevLabs.Api.csproj
+dotnet new xunit -n DevLabs.Tests
+dotnet sln LaboratorioDeTestes.sln add DevLabs.Tests/DevLabs.Tests.csproj
+
+dotnet add DevLabs.Tests package xunit
+dotnet add DevLabs.Tests package xunit.runner.visualstudio
+dotnet add DevLabs.Tests package Bogus
+dotnet add DevLabs.Tests package Moq
+dotnet add DevLabs.Tests package FluentAssertions
+dotnet add DevLabs.Tests package Microsoft.EntityFrameworkCore.SqlServer
+
+dotnet add reference ../LaboratorioDeTestes.csproj
 
 dotnet test
 dotnet test -v n
