@@ -7,6 +7,7 @@ using Xunit.Abstractions;
 
 namespace DevLabs.Tests.Entities;
 
+[Trait("Category","Car")]
 public sealed class CarTests
 {
     private readonly Faker _faker = new Faker("pt_BR");
