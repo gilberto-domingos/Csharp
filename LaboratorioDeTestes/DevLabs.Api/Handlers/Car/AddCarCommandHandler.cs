@@ -10,7 +10,7 @@ namespace DevLabs.Api.Handlers.Car
 
         public AddCarCommandHandler(ICar carService)
         {
-            _carService = carService;
+            _carService = carService;   
         }
 
         public async Task<Entities.Car> Handle(AddCarCommand request, CancellationToken cancellationToken)
