@@ -24,10 +24,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
   </ItemGroup>
   <ItemGroup>
-    <AssemblyAttibute Include="System.Runtime.CompileServices.InternalsVisibleTo">
-      <Parameter1>$(AssemblyName).Tests</Parameter1>
-    </AssemblyAttibute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>LaboratorioDeTestesTests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
+
   <ItemGroup>
     <Compile Update="LaboratorioDeTestesTests\Entities\CarTests.cs">
       <Link>LaboratorioDeTestesTest\Entities\CarTests.cs</Link>
