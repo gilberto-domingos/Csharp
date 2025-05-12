@@ -16,10 +16,17 @@ namespace DevLabs.Api.Controllers
         }
 
         [HttpGet("validate/{id:guid}", Name = "ValidateChassi")]
-        public async Task<IActionResult> ValidateChassi(Guid id, CancellationToken cancelToken)
+        public async Task<IActionResult> CheckIfValidAsync(Guid id, CancellationToken cancelToken)
         {
-            bool isValid = await _carInterface.CheckIfValidAsync(id, cancelToken);
-            return Ok(new { IsValid = isValid });
+            try
+            {
+                bool isValid = await _carInterface.CheckIfValidAsync(id, cancelToken);
+                return Ok(new { IsValid = isValid });
+            }
+            catch (Exception e)
+            {
+                return Conflict(new { error = e.Message });
+            }
         }
 
         [HttpPost(Name = "CreateCarAsync")]

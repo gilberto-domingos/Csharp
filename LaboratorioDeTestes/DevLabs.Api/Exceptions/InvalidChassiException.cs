@@ -1,4 +1,4 @@
-namespace DevLabs.Api.Handlers.Exceptions;
+namespace DevLabs.Api.Exceptions;
 
 internal sealed class InvalidChassiException : Exception
 {
@@ -6,4 +6,4 @@ internal sealed class InvalidChassiException : Exception
     {
 
     }
-}
+}       
