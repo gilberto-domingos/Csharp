@@ -2,6 +2,7 @@ using Bogus;
 
 
 using DevLabs.Api.Entities;
+using FluentAssertions;
 using Xunit.Abstractions;
 
 namespace DevLabs.Tests.Entities;
@@ -14,6 +15,24 @@ public sealed class CarTests
     public CarTests(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
+    }
+
+    [Fact]
+    public void FluentAssertionsConstructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly()
+    {
+        // Fluent Assertions
+        //Arr - GivenAllParameters
+        var expectedId = Guid.NewGuid();
+        var expectedName = _faker.Vehicle.Model();
+        var expectedChassi = _faker.Random.Int();
+
+        //Act
+        var car = new Car(expectedId, expectedName, expectedChassi);
+
+        //Assert - ThenShouldSetThePropertiesCorrectly
+        car.Id.Should().Be(expectedId);
+        car.Name.Should().Be(expectedName);
+        car.Chassi.Should().Be(expectedChassi);
     }
 
     [Fact]
@@ -42,6 +61,7 @@ public sealed class CarTests
     [Theory]
     [InlineData("Ferrari")]
     [InlineData("Fusca ")]
+
     public void TheoryConstructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly(string expectedName)
     {
         //Arr - GivenAllParameters
