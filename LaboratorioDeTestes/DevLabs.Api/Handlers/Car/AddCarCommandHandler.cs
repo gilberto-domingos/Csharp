@@ -1,30 +1,21 @@
-using DevLabs.Api.Data;
-using DevLabs.Api.Dtos;
-using DevLabs.Api.Entities;
-using DevLabs.Api.Handlers.Exceptions;
+using DevLabs.Api.Commands.Car;
 using DevLabs.Api.Interfaces;
 using MediatR;
 
-namespace FudamentosTestes.Handlers;
-
-internal class AddCarCommandHandler(ICar carChassiValidatorService, ApiDbContext appDbContext)
-    : IRequestHandler<AddCarCommand, CarDto>
+namespace DevLabs.Api.Handlers.Car
 {
-    public async Task<CarDto> Handle(AddCarCommand request, CancellationToken cancellationToken)
+    public class AddCarCommandHandler : IRequestHandler<AddCarCommand, Entities.Car>
     {
+        private readonly ICar _carService;
 
-        var id = Guid.NewGuid();
+        public AddCarCommandHandler(ICar carService)
+        {
+            _carService = carService;
+        }
 
-        var isValidChassi = await carChassiValidatorService.CheckIfValidAsync(id, cancellationToken);
-
-        if (!isValidChassi)
-            throw new InvalidChassiException($"[{request.Nome}] chassi invalido!");
-
-        var car = new Car(id, request.Nome);
-
-        await appDbContext.Cars.AddAsync(car, cancellationToken);
-        await appDbContext.SaveChangesAsync(cancellationToken);
-
-        return new CarDto(car.Id, car.Name, car.Chassi);
+        public async Task<Entities.Car> Handle(AddCarCommand request, CancellationToken cancellationToken)
+        {
+            return await _carService.CreateAsync(request.CarDto);
+        }
     }
 }

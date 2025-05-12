@@ -1,6 +1,15 @@
 using DevLabs.Api.Dtos;
 using MediatR;
 
-namespace FudamentosTestes.Handlers;
+namespace DevLabs.Api.Commands.Car
+{
+    public class AddCarCommand : IRequest<Entities.Car>
+    {
+        public CarDto CarDto { get; }
 
-internal record AddCarCommand(string Nome) : IRequest<CarDto>;
+        public AddCarCommand(CarDto carDto)
+        {
+            CarDto = carDto;
+        }
+    }
+}
