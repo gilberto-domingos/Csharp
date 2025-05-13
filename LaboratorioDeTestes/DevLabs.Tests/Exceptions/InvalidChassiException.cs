@@ -6,6 +6,7 @@ using Xunit.Abstractions;
 
 namespace DevLabs.Tests.Exceptions;
 
+[Trait("Category","CarException")]
 public sealed class InvalidChassiExceptionTests
 {
     private readonly Faker _faker = new Faker("pt_BR");
