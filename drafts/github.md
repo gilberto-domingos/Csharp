@@ -1,5 +1,10 @@
 # Rascunho de comamdos do github :
 
+git diff
+git diff --cached
+git diff caminho/do/arquivo
+
+
 git rebase -i --root
 git rebase -i HEAD~1
 git reset HEAD^
