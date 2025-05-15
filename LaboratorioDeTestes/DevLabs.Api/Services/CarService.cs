@@ -1,28 +1,16 @@
 using DevLabs.Api.Dtos;
 using DevLabs.Api.Entities;
-using DevLabs.Api.Exceptions;
 using DevLabs.Api.Interfaces;
 
 namespace DevLabs.Api.Services
 {
-    internal sealed class CarChassiValidatorService : ICar
+    internal sealed class CarService : ICar
     {
         private readonly ICarRepository _repository;
 
-        public CarChassiValidatorService(ICarRepository repository)
+        public CarService(ICarRepository repository)
         {
             _repository = repository;
-        }
-
-        // Esse método não faz nada, só uma validação um exerc. para meu teste unitário. 
-        public async Task<bool> CheckIfValidAsync(Guid id, CancellationToken cancelToken)
-        {
-            var isValidChassi = await _repository.CheckChassiExistsAsync(id, cancelToken);
-            
-            if(!isValidChassi)
-                throw new InvalidChassiException($"Chassi [{id}] chassi inválido!");
-
-            return true;
         }
 
         public async Task<Car> CreateAsync(CarDto carDto)

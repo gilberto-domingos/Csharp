@@ -15,20 +15,6 @@ namespace DevLabs.Api.Controllers
             _carInterface = carInterface;
         }
 
-        [HttpGet("validate/{id:guid}", Name = "ValidateChassi")]
-        public async Task<IActionResult> CheckIfValidAsync(Guid id, CancellationToken cancelToken)
-        {
-            try
-            {
-                bool isValid = await _carInterface.CheckIfValidAsync(id, cancelToken);
-                return Ok(new { IsValid = isValid });
-            }
-            catch (Exception e)
-            {
-                return Conflict(new { error = e.Message });
-            }
-        }
-
         [HttpPost(Name = "CreateCarAsync")]
         public async Task<IActionResult> CreateAsync(CarDto carDto)
         {
@@ -38,7 +24,6 @@ namespace DevLabs.Api.Controllers
                 return NotFound();
 
             return Ok(createdCar);
-
         }
 
         [HttpGet("{id:guid}", Name = "GetByIdAsync")]
