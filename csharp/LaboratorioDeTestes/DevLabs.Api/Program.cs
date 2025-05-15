@@ -37,7 +37,8 @@ builder.Services.AddScoped<IAutor, AutorService>();
 builder.Services.AddScoped<IAutorRepository, AutorRepository>();
 builder.Services.AddScoped<ILivro, LivroService>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
-builder.Services.AddScoped<ICar, CarChassiValidatorService>();
+builder.Services.AddScoped<ICar, CarService>();
+builder.Services.AddScoped<ICarChassiValidator, CarChassiValidatorService>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 
