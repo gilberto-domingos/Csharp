@@ -1,8 +1,7 @@
 using DevLabs.Api.Dtos;
 using DevLabs.Api.Entities;
-using DevLabs.Api.Handlers.Commands;
+using DevLabs.Api.Commands.Livro;
 using DevLabs.Api.Handlers.Livro.Commands;
-using DevLabs.Api.Handlers.Livro.Queries;
 using DevLabs.Api.Queries.Livro;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
@@ -60,7 +59,7 @@ namespace DevLabs.Api.Controllers
         [HttpDelete("ExcluirLivro/{idLivro:guid}")]
         public async Task<ActionResult<Livro>> ExcluirLivro(Guid idLivro)
         {
-            var livro = await _mediator.Send(new DeleteLivroCommand(idLivro));
+            var livro = await _mediator.Send(new ExcluirLivroCommand(idLivro));
             return Ok(livro);
         }
     }

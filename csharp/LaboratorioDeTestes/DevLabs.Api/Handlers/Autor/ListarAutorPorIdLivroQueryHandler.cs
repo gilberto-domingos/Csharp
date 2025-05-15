@@ -1,8 +1,8 @@
 using DevLabs.Api.Interfaces;
-using DevLabs.Api.Entities;
+using DevLabs.Api.Queries.Autor;
 using MediatR;
 
-namespace DevLabs.Api.Queries.Autor
+namespace DevLabs.Api.Handlers.Autor
 {
     public class ListarAutorPorIdLivroQueryHandler : IRequestHandler<ListarAutorPorIdLivroQuery, Entities.Autor>
     {

@@ -3,7 +3,7 @@ using DevLabs.Api.Dtos;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FudamentosTestes.Handlers;
+namespace DevLabs.Api.Queries.Car;
 
 internal sealed class GetCarByIdQueryHandler(ApiDbContext dbContext) : IRequestHandler<GetCarByIdQuery, CarDto?>
 {

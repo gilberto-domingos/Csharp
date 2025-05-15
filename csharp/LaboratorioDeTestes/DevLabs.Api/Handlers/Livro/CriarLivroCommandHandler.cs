@@ -1,9 +1,8 @@
 using DevLabs.Api.Interfaces;
+using DevLabs.Api.Commands.Livro;
 using MediatR;
-using DevLabs.Api.Entities;
-using DevLabs.Api.Dtos;
 
-namespace DevLabs.Api.Handlers.Commands
+namespace DevLabs.Api.Handlers.Livro
 {
     public class CriarLivroCommandHandler : IRequestHandler<CriarLivroCommand, Entities.Livro>
     {

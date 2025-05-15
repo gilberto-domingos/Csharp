@@ -1,11 +1,8 @@
 using MediatR;
-using DevLabs.Api.Entities;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using DevLabs.Api.Interfaces;
+using DevLabs.Api.Commands.Livro;
 
-namespace DevLabs.Api.Handlers.Commands
+namespace DevLabs.Api.Handlers.Livro
 {
     public class ExcluirLivroCommandHandler : IRequestHandler<ExcluirLivroCommand, Entities.Livro>
     {

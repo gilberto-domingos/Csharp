@@ -1,4 +1,3 @@
-using DevLabs.Api.Entities;
 using MediatR;
 
 namespace DevLabs.Api.Queries.Autor

@@ -1,8 +1,8 @@
+using DevLabs.Api.Handlers.Livro.Commands;
 using DevLabs.Api.Interfaces;
 using MediatR;
-using DevLabs.Api.Entities;
 
-namespace DevLabs.Api.Handlers.Livro.Commands
+namespace DevLabs.Api.Handlers.Livro
 {
     public class UpdateLivroHandler : IRequestHandler<UpdateLivroCommand, Entities.Livro>
     {
