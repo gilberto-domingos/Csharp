@@ -1,24 +1,27 @@
+using DevLabs.Api.Dtos;
 using DevLabs.Api.Exceptions;
 using DevLabs.Api.Interfaces;
+using DevLabs.Api.Repositories;
 
 namespace DevLabs.Api.Services;
 
 public class CarChassiValidatorService : ICarChassiValidator
 {
-    private readonly ICarRepository _repository;
+    private readonly ICarChassiValidatorRepository _repository;
 
-    public CarChassiValidatorService(ICarRepository repository)
+    public CarChassiValidatorService(ICarChassiValidatorRepository repository)
     {
         _repository = repository;
     }
     
-    public async Task<bool> CheckIfValidAsync(Guid id, CancellationToken cancelToken)
+    public async Task<bool> CheckIfValidAsync(int chassi, CancellationToken cancelToken)
     {
-        var isValidChassi = await _repository.CheckChassiExistsAsync(id, cancelToken);
-                
-        if(!isValidChassi)
-            throw new InvalidChassiException($"Chassi [{id}] chassi inválido!");
+        var isValidChassi = await _repository.CheckIfValidAsync(chassi, cancelToken);
+
+        if (!isValidChassi)
+            throw new InvalidChassiException($"Chassi [{chassi}] inválido!");
 
         return true;
     }
+
 }
