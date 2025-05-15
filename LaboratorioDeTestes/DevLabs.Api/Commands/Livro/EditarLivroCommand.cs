@@ -1,8 +1,7 @@
 using DevLabs.Api.Dtos;
 using MediatR;
-using DevLabs.Api.Entities;
 
-namespace DevLabs.Api.Handlers.Commands
+namespace DevLabs.Api.Commands.Livro
 {
     public class EditarLivroCommand : IRequest<Entities.Livro>
     {

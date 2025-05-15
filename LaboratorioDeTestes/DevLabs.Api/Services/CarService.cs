@@ -1,6 +1,7 @@
 using DevLabs.Api.Dtos;
 using DevLabs.Api.Entities;
 using DevLabs.Api.Interfaces;
+using DevLabs.Api.Repositories;
 
 namespace DevLabs.Api.Services
 {

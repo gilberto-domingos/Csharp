@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace DevLabs.Api.Handlers.Commands
+namespace DevLabs.Api.Commands.Livro
 {
     public class ExcluirLivroCommand : IRequest<Entities.Livro>
     {

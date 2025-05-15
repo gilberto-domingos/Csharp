@@ -1,7 +1,8 @@
 using DevLabs.Api.Interfaces;
+using DevLabs.Api.Queries.Livro;
 using MediatR;
 
-namespace DevLabs.Api.Queries.Livro
+namespace DevLabs.Api.Handlers.Livro
 {
     public class ListarLivrosQueryHandler : IRequestHandler<ListarLivrosQuery, List<Entities.Livro>>
     {

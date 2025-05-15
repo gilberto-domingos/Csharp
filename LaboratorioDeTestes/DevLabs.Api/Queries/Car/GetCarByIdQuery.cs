@@ -1,6 +1,6 @@
 using DevLabs.Api.Dtos;
 using MediatR;
 
-namespace FudamentosTestes.Handlers;
+namespace DevLabs.Api.Queries.Car;
 
 internal record GetCarByIdQuery(Guid CardId) : IRequest<CarDto?>;
