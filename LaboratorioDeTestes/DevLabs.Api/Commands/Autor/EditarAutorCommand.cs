@@ -1,5 +1,4 @@
 using DevLabs.Api.Dtos;
-using DevLabs.Api.Entities;
 using MediatR;
 
 namespace DevLabs.Api.Commands.Autor
@@ -10,7 +9,7 @@ namespace DevLabs.Api.Commands.Autor
 
         public EditarAutorCommand(AutorEditarDto autorEditarDto)
         {
-            AutorEditarDto = autorEditarDto;
+            AutorEditarDto = autorEditarDto?? throw new ArgumentNullException(nameof(autorEditarDto)) ;
         }
     }
 }
