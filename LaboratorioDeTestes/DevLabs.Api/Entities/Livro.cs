@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DevLabs.Api.Entities;
 
@@ -6,17 +7,12 @@ public class Livro
 {
     [Key]
     public Guid IdLivro { get; init; }
-
     public required string Titulo { get; set; }
-
     public Guid IdAutor { get; init; }
-
     public required Autor Autor { get; set; }
-
-
     public Livro() { }
-
-
+    
+    [SetsRequiredMembers]
     public Livro(string titulo, Guid idAutor, Autor autor)
     {
         IdLivro = Guid.NewGuid();
@@ -26,6 +22,7 @@ public class Livro
     }
 
     //Const.extra para testes automatizados, testes unitários, mocks ou imports com ID definido
+    [SetsRequiredMembers]
     public Livro(Guid idLivro, string titulo, Guid idAutor, Autor autor)
     {
         IdLivro = idLivro;
