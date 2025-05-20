@@ -1,13 +1,13 @@
 ## Back-end => C# .Net 
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
 
-- #### Projetos : 
+- #### Projetos nesse repositório e andamentos : 
 - ApiRestFull .Net -> seguindo o padrão Clean Architecture + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions, Migrations + POO + SOLID + Docker, robusta, escalável e fácil manutenção.
 - Laboratorio de Testes - projeto para praticar testes unitários, de cobertura e de integração.
 - Testando entidades no DDD.
-- Teste unitários, XUnit.
+- Teste unitários, XUnit, Fluent Assertions.
 
-- #### Conteúdo :
+- #### Conteúdos :
 - POO - Programação Orientada a Objetos.
 - Padrões Design Patterns
 - Padrões SOLID 
