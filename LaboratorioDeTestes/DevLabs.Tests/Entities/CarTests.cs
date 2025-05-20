@@ -1,12 +1,10 @@
 using Bogus;
-
-
 using DevLabs.Api.Entities;
 using FluentAssertions;
 using Xunit.Abstractions;
 
 namespace DevLabs.Tests.Entities;
-
+// testando com bibliotecas diferentes 
 [Trait("Category","CarEntity")]
 public sealed class CarTests
 {
