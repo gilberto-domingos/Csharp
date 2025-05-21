@@ -4,8 +4,9 @@
 
     namespace DevLabs.Tests.Entities;
 
+    [Trait("Categoria", "Entidade")]
     [Trait("Entidade", "Autor")]
-    [Trait("Tipo", "Unitario")]
+    [Trait("Tipo", "Unitário")]
     public class AutorTests
     {
         private readonly Faker _faker = new Faker("pt_BR");
