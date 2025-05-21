@@ -6,22 +6,16 @@ using Xunit.Abstractions;
 
 namespace DevLabs.Tests.Exceptions;
 
-[Trait("Category","CarException")]
+[Trait("Category", "Exception")]
+[Trait("Type", "UnitTest")]
 public sealed class InvalidChassiExceptionTests
 {
     private readonly Faker _faker = new Faker("pt_BR");
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public InvalidChassiExceptionTests(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
 
     [Fact]
     public void Constructor_GivenMessage_ThenShouldSetMessageToException()
     {
         var message = _faker.Lorem.Text();
-        _testOutputHelper.WriteLine(message);
 
         var exception = new InvalidChassiException(message);
 
