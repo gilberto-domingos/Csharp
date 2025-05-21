@@ -20,14 +20,11 @@ public sealed class InvalidChassiExceptionTests
     [Fact]
     public void Constructor_GivenMessage_ThenShouldSetMessageToException()
     {
-        //Arr
         var message = _faker.Lorem.Text();
         _testOutputHelper.WriteLine(message);
 
-        //Act
         var exception = new InvalidChassiException(message);
 
-        //Assert
         exception.Message.Should().Be(message);
     }
     
