@@ -1,20 +1,15 @@
 using Bogus;
 using DevLabs.Api.Entities;
 using FluentAssertions;
-using Xunit.Abstractions;
 
 namespace DevLabs.Tests.Entities;
-// testando com bibliotecas diferentes 
-[Trait("Category","CarEntity")]
+// só exp. bibliotecas diferentes 
+[Trait("Category", "Entity")]
+[Trait("Entity", "Author")]
+[Trait("Type", "UnitTest")]
 public sealed class CarTests
-{
+{   
     private readonly Faker _faker = new Faker("pt_BR");
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public CarTests(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
 
     [Fact]
     public void FluentAssertionsConstructor_GivenAllParameters_ThenShouldSetThePropertiesCorrectly()
@@ -36,8 +31,6 @@ public sealed class CarTests
         var expectedId = Guid.NewGuid();
         var expectedName = _faker.Vehicle.Model();
         var expectedChassi = _faker.Random.Int();
-
-        _testOutputHelper.WriteLine(expectedName); 
 
         var car = new Car(expectedId, expectedName, expectedChassi);
 
