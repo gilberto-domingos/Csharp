@@ -1,5 +1,5 @@
+using ApiRestFull.Dtos;
 using ApiRestFull.Entities;
-using ApiRestFull.DTOs;
 
 namespace ApiRestFull.Interfaces
 {

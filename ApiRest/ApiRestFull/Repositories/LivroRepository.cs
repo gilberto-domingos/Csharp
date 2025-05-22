@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ApiRestFull.Data;
+using ApiRestFull.Dtos;
 using ApiRestFull.Entities;
-using ApiRestFull.DTOs;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Exceptions;
 
