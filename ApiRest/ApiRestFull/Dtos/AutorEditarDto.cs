@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ApiRestFull.Dtos;
 
 public class AutorEditarDto
