@@ -1,7 +1,7 @@
 using MediatR;
 using ApiRestFull.Entities;
 
-namespace ApiRestFull.Handlers.Livro.Queries
+namespace ApiRestFull.Queries.Livro
 {
     public record ListarLivroIdQuery(Guid IdLivro) : IRequest<Entities.Livro>;
 }

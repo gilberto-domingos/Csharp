@@ -1,4 +1,3 @@
-using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Queries.Autor
