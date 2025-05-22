@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using ApiRestFull.Dtos;
 using ApiRestFull.Entities;
-using ApiRestFull.Handlers.Livro.Queries;
 using ApiRestFull.Queries.Livro;  
  
 
