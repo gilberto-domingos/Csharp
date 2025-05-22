@@ -6,7 +6,7 @@ using ApiRestFull.Repositories;
 using System.Reflection;
 using MediatR;
 using System.Text.Json;
-using DevLabs.Api.Mappings;
+using ApiRestFull.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
