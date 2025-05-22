@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiRestFull.DTOs;
+namespace ApiRestFull.Dtos;
 
 public class AutorVinculoDto
 {
