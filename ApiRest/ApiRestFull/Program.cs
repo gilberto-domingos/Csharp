@@ -6,6 +6,7 @@ using ApiRestFull.Repositories;
 using System.Reflection;
 using MediatR;
 using System.Text.Json;
+using DevLabs.Api.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +75,8 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+MapsterConfig.RegisterMappings();
 
 var app = builder.Build();
 
