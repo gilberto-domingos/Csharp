@@ -1,9 +1,8 @@
+using ApiRestFull.Commands;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using ApiRestFull.DTOs;
+using ApiRestFull.Dtos;
 using ApiRestFull.Entities;
-using ApiRestFull.Handlers.Livro.Commands;
-using ApiRestFull.Handlers.Commands;
 using ApiRestFull.Handlers.Livro.Queries;
 using ApiRestFull.Queries.Livro;  
  

@@ -1,5 +1,5 @@
 using MediatR;
-using ApiRestFull.DTOs;
+using ApiRestFull.Dtos;
 using ApiRestFull.Commands.Autor;
 using ApiRestFull.Queries.Autor;
 using Microsoft.AspNetCore.Mvc;
