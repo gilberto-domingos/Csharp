@@ -1,7 +1,5 @@
 using ApiRestFull.Commands.Autor;
-using ApiRestFull.DTOs;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Entities;
 using MediatR;
 
 namespace ApiRestFull.Handlers.Autor
