@@ -1,7 +1,8 @@
 using ApiRestFull.Interfaces;
 using ApiRestFull.Entities;
-using ApiRestFull.DTOs;
+using ApiRestFull.Dtos;
 using ApiRestFull.Exceptions;
+using Mapster;
 
 namespace ApiRestFull.Services
 {
@@ -16,23 +17,14 @@ namespace ApiRestFull.Services
 
         public async Task<Autor> CriarAutor(AutorCriarDto autorCriarDto)
         {
-            var autor = new Autor
-            {
-                Nome = autorCriarDto.Nome,
-                Sobrenome = autorCriarDto.Sobrenome
-            };
+            var autor = autorCriarDto.Adapt<Autor>();
 
             return await _autorRepository.CriarAutor(autor);
         }
 
         public async Task<Autor> EditarAutor(AutorEditarDto autorEditarDto)
         {
-            var autor = new Autor
-            {
-                IdAutor = autorEditarDto.idAutor,
-                Nome = autorEditarDto.Nome,
-                Sobrenome = autorEditarDto.Sobrenome
-            };
+            var autor = autorEditarDto.Adapt<Autor>();
 
             var atualizado = await _autorRepository.EditarAutor(autor);
             if (atualizado == null)

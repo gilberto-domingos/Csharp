@@ -1,4 +1,4 @@
-using ApiRestFull.DTOs;
+using ApiRestFull.Dtos;
 using ApiRestFull.Exceptions;
 using ApiRestFull.Interfaces;
 using ApiRestFull.Entities;
