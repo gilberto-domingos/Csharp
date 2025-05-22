@@ -1,7 +1,8 @@
 using ApiRestFull.Interfaces;
+using ApiRestFull.Queries.Autor;
 using MediatR;
 
-namespace ApiRestFull.Queries.Autor
+namespace ApiRestFull.Handlers.Autor
 {
     public class ListarAutoresQueryHandler : IRequestHandler<ListarAutoresQuery, List<Entities.Autor>>
     {

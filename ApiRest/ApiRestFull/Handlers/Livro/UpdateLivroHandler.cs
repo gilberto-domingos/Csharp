@@ -1,8 +1,8 @@
+using ApiRestFull.Commands;
 using MediatR;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Entities;
 
-namespace ApiRestFull.Handlers.Livro.Commands
+namespace ApiRestFull.Handlers.Livro
 {
     public class UpdateLivroHandler : IRequestHandler<UpdateLivroCommand, Entities.Livro>
     {

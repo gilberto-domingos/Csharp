@@ -1,9 +1,8 @@
-using MediatR;
+using ApiRestFull.Commands;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Entities;
-using ApiRestFull.DTOs;
+using MediatR;
 
-namespace ApiRestFull.Handlers.Commands
+namespace ApiRestFull.Handlers.Livro
 {
     public class CriarLivroCommandHandler : IRequestHandler<CriarLivroCommand, Entities.Livro>
     {
@@ -12,7 +11,7 @@ namespace ApiRestFull.Handlers.Commands
         public CriarLivroCommandHandler(ILivro livroService)
         {
             _livroService = livroService;
-        }
+        }   
 
         public async Task<Entities.Livro> Handle(CriarLivroCommand request, CancellationToken cancellationToken)
         {

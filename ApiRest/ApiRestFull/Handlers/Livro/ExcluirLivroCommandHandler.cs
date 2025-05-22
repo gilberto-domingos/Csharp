@@ -1,9 +1,6 @@
+using ApiRestFull.Commands;
 using MediatR;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Entities;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ApiRestFull.Handlers.Commands
 {

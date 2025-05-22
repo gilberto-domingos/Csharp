@@ -1,8 +1,9 @@
+using ApiRestFull.Handlers.Livro;
 using MediatR;
 using ApiRestFull.Interfaces;
-using ApiRestFull.Entities;
+using ApiRestFull.Queries.Livro;
 
-namespace ApiRestFull.Handlers.Livro.Queries
+namespace ApiRestFull.Handlers.Livro
 {
     public class ListarLivrosPorIdAutorQueryHandler : IRequestHandler<ListarLivrosPorIdAutorQuery, List<Entities.Livro>>
     {
