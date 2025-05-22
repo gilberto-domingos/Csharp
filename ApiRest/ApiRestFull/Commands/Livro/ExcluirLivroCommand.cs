@@ -1,9 +1,6 @@
-using ApiRestFull.DTOs;
-using ApiRestFull.Entities;
 using MediatR;
-using System;
 
-namespace ApiRestFull.Handlers.Commands
+namespace ApiRestFull.Commands
 {
     public class ExcluirLivroCommand : IRequest<Entities.Livro>
     {

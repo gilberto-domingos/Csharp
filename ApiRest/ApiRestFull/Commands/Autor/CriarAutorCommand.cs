@@ -1,5 +1,4 @@
-using ApiRestFull.DTOs;
-using ApiRestFull.Entities;
+using ApiRestFull.Dtos;
 using MediatR;
 
 namespace ApiRestFull.Commands.Autor

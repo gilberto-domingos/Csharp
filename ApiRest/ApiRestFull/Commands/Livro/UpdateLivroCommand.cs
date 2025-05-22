@@ -1,9 +1,7 @@
 using MediatR;
-using ApiRestFull.DTOs;
-using ApiRestFull.Entities;
-using System.Collections.Generic;
+using ApiRestFull.Dtos;
 
-namespace ApiRestFull.Handlers.Livro.Commands
+namespace ApiRestFull.Commands
 {
     public record UpdateLivroCommand(LivroEditarDto LivroEditarDto) : IRequest<Entities.Livro>;
 }
