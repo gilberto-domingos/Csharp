@@ -1,4 +1,4 @@
-using ApiRestFull.DTOs;
+using ApiRestFull.Dtos;
 using ApiRestFull.Entities;
 
 namespace ApiRestFull.Interfaces;
