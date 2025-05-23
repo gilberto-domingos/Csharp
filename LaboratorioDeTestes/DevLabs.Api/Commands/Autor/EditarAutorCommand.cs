@@ -9,7 +9,7 @@ namespace DevLabs.Api.Commands.Autor
 
         public EditarAutorCommand(AutorEditarDto autorEditarDto)
         {
-            AutorEditarDto = autorEditarDto?? throw new ArgumentNullException(nameof(autorEditarDto)) ;
+            AutorEditarDto = autorEditarDto;
         }
     }
 }
