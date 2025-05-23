@@ -2,6 +2,7 @@ using DevLabs.Api.Dtos;
 using DevLabs.Api.Entities;
 using DevLabs.Api.Interfaces;
 using DevLabs.Api.Repositories;
+using Mapster;
 
 namespace DevLabs.Api.Services
 {
@@ -16,7 +17,7 @@ namespace DevLabs.Api.Services
 
         public async Task<Car> CreateAsync(CarDto carDto)
         {
-            var car = new Car {Id = Guid.NewGuid(),Name = carDto.Name, Chassi = carDto.Chassi, };
+            var car = carDto.Adapt<Car>();
 
             var createdCar = await _repository.AddAsync(car);
             return createdCar;

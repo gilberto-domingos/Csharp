@@ -1,6 +1,11 @@
-namespace DevLabs.Api.AutoMapper;
+namespace DevLabs.Api.Mappings;
 
-public class MapsterConfig
+public static class MapsterConfig
 {
-    
+    public static void RegisterMappings()
+    {
+        AutorMapping.Register();
+        LivroMapping.Register();
+        CarMapping.Register();
+    }
 }

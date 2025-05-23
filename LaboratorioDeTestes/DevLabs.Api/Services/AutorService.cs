@@ -2,6 +2,7 @@ using DevLabs.Api.Dtos;
 using DevLabs.Api.Entities;
 using DevLabs.Api.Exceptions;
 using DevLabs.Api.Interfaces;
+using Mapster;
 
 namespace DevLabs.Api.Services
 {
@@ -16,23 +17,14 @@ namespace DevLabs.Api.Services
 
         public async Task<Autor> CriarAutor(AutorCriarDto autorCriarDto)
         {
-            var autor = new Autor
-            {
-                Nome = autorCriarDto.Nome,
-                Sobrenome = autorCriarDto.Sobrenome
-            };
+            var autor = autorCriarDto.Adapt<Autor>();
 
             return await _autorRepository.CriarAutor(autor);
         }
 
         public async Task<Autor> EditarAutor(AutorEditarDto autorEditarDto)
         {
-            var autor = new Autor
-            {
-                IdAutor = autorEditarDto.idAutor,
-                Nome = autorEditarDto.Nome,
-                Sobrenome = autorEditarDto.Sobrenome
-            };
+            var autor = autorEditarDto.Adapt<Autor>();
 
             var atualizado = await _autorRepository.EditarAutor(autor);
             if (atualizado == null)

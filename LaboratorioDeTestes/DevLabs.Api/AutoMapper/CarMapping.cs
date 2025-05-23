@@ -1,6 +1,13 @@
-namespace DevLabs.Api.AutoMapper;
+using DevLabs.Api.Dtos;
+using DevLabs.Api.Entities;
+using Mapster;
 
-public class CarMapping
+namespace DevLabs.Api.Mappings;
+
+public static class CarMapping
 {
-    
+    public static void Register()
+    {
+        TypeAdapterConfig<Car, CarDto>.NewConfig().TwoWays();
+    }
 }
