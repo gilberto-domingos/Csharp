@@ -9,7 +9,7 @@ namespace DevLabs.Api.Commands.Autor
 
         public CriarAutorCommand(AutorCriarDto autorCriarDto)
         {
-            AutorCriarDto = autorCriarDto ?? throw new ArgumentNullException(nameof(autorCriarDto));
+            AutorCriarDto = autorCriarDto;
         }
     }
 }
