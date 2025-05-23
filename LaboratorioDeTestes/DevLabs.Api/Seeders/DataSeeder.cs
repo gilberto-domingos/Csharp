@@ -1,6 +1,5 @@
 using DevLabs.Api.Data;
 using DevLabs.Api.Entities;
-using Microsoft.Extensions.Logging;
 
 public class DataSeeder : IDataSeeder
 {
@@ -8,16 +7,14 @@ public class DataSeeder : IDataSeeder
     {
         if (!context.Autores.Any())
         {
-            var autores = new List<Autor>
-            {
-                new Autor { IdAutor = Guid.NewGuid(), Nome = "Machado", Sobrenome = "de Assis" },
-                new Autor { IdAutor = Guid.NewGuid(), Nome = "Clarice", Sobrenome = "Lispector" },
-                new Autor { IdAutor = Guid.NewGuid(), Nome = "Jorge", Sobrenome = "Amado" },
-                new Autor { IdAutor = Guid.NewGuid(), Nome = "Cecília", Sobrenome = "Meireles" },
-                new Autor { IdAutor = Guid.NewGuid(), Nome = "Carlos", Sobrenome = "Drummond" }
-            };
+            context.Autores.AddRange(
+                new Autor { IdAutor = new Guid("10000000-0000-0000-0000-000000000001"), Nome = "Machado", Sobrenome = "de Assis", Livros = new List<Livro>() },
+                new Autor { IdAutor = new Guid("10000000-0000-0000-0000-000000000002"), Nome = "Clarice", Sobrenome = "Lispector", Livros = new List<Livro>() },
+                new Autor { IdAutor = new Guid("10000000-0000-0000-0000-000000000003"), Nome = "Jorge", Sobrenome = "Amado", Livros = new List<Livro>() },
+                new Autor { IdAutor = new Guid("10000000-0000-0000-0000-000000000004"), Nome = "Cecília", Sobrenome = "Meireles", Livros = new List<Livro>() },
+                new Autor { IdAutor = new Guid("10000000-0000-0000-0000-000000000005"), Nome = "Carlos", Sobrenome = "Drummond", Livros = new List<Livro>() }
+            );
 
-            context.Autores.AddRange(autores);
             await context.SaveChangesAsync();
             logger.LogInformation("Autores inseridos.");
         }
