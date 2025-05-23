@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Serilog;
 using System.Reflection;
+using DevLabs.Api.Mappings;
 
 DotNetEnv.Env.Load();
 
@@ -39,9 +40,9 @@ builder.Services.AddScoped<ILivro, LivroService>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 builder.Services.AddScoped<ICar, CarService>();
 builder.Services.AddScoped<ICarChassiValidator, CarChassiValidatorService>();
+builder.Services.AddScoped<ICarChassiValidatorRepository, CarChassiValidatorRepository>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -65,6 +66,8 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
+MapsterConfig.RegisterMappings();
 
 var app = builder.Build();
 
