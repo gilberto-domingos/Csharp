@@ -21,8 +21,6 @@ var connectionString =
 
 builder.Configuration["ConnectionStrings:DefaultConnection"] = connectionString;
 
-builder.WebHost.UseUrls("http://0.0.0.0:5000");
-
 builder.Services.AddScoped<IAutorRepository, AutorRepository>();
 builder.Services.AddScoped<IAutor, AutorService>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
