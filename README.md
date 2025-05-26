@@ -1,11 +1,12 @@
 ## Back-end => C# .Net 
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
-
+---
 - #### Projetos nesse repositório e andamentos : 
-- ApiRestFull .Net -> seguindo o padrão Clean Architecture + POO + Design Pattern + SOLID + AutoMapper + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions + Migrations + RabbitMQ + Docker + workflows, robusta, escalável de fácil manutenção.
-- Laboratorio de Testes - projeto para praticar testes unitários, de cobertura e de integração.
-- Testando entidades no DDD.
-- Teste unitários, XUnit, Fluent Assertions.
+- => ApiRestFull .Net -> seguindo o padrão Clean Architecture + POO + Design Pattern + SOLID + AutoMapper + MediatR + CQRS + ActionFilter + Middleware + Handlers + Exceptions + Migrations + Docker + workflows, robusta, escalável de fácil manutenção.
+- => Laboratorio de Testes - projeto para praticar testes unitários, de cobertura e de integração.
+- => Testando entidades no DDD.
+- => Teste unitários, XUnit, Fluent Assertions.
+- => Logica Exercicios - para praticar lógica e outras coisas.
 
 - #### Conteúdos :
 - POO - Programação Orientada a Objetos.
@@ -19,7 +20,7 @@
 - Automação de issues workflows com enumeração de tickets(#00000)
 
 - ### ==> ApiRestFull, princípio (Representational State Transfer) -> Back-end e Servidor são separados e se comunicam via requisições HTTP.
-- Desenvolvimento ApiRestFull (.Net + SqlServer + RabbitMq) e containerização Docker.
+- Desenvolvimento ApiRestFull (.Net + SqlServer + containerização Docker).
 
 - #### Descrições :
 - Configuração do Banco de dados(SqlServer) + EF Core + Migrations - InitialCreate. 
