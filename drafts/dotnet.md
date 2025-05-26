@@ -1,5 +1,6 @@
 # Rascunho de comandos .Net :
 
+dotnet ef dbcontext info
 
 
 dotnet new sln -n LaboratorioDeTestes
