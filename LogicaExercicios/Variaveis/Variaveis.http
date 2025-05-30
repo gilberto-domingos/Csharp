@@ -1,0 +1,6 @@
+@Variaveis_HostAddress = http://localhost:5207
+
+GET {{Variaveis_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
