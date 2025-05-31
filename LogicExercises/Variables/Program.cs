@@ -1,12 +1,12 @@
-﻿using LogicaExercicios.Entities;
+﻿using LogicExercises.Entities;
 
-namespace LogicaExercicios;
+namespace LogicExercises;
 
-class Program
+internal class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        var variaveis = new Variaveis();
+        var variaveis = new Variables();
 
         variaveis.VByte = 255;
         variaveis.VSByte = -128;
@@ -16,37 +16,37 @@ class Program
         variaveis.VUInt = 4294967295;
         variaveis.VLong = -9223372036854775808;
         variaveis.VULong = 18446744073709551615;
-        
+
         variaveis.VFloat = 5.35f;
         variaveis.VDouble = 3.464894444984;
         variaveis.VDecimal = 494564984984944494m;
-       
+
         variaveis.VChar = 'A';
         variaveis.VBool = true;
 
-        variaveis.VString = "Minha frase texto...";
-        variaveis.VObjectInt = 12345; 
-        variaveis.VObjectString = "12345"; 
+        variaveis.VString = "My text phrase...";
+        variaveis.VObjectInt = 12345;
+        variaveis.VObjectString = "12345";
         // Unboxing to int or string
-        int valor = (int)variaveis.VObjectInt;
-        string valor2 = (string)variaveis.VObjectString;
+        var valor = (int)variaveis.VObjectInt;
+        var valor2 = (string)variaveis.VObjectString;
 
         variaveis.VDateTime = DateTime.Now;
         variaveis.VTimeSpan = TimeSpan.FromHours(1.5);
         variaveis.VTimeSpan = TimeSpan.FromMinutes(90);
-       
+
         variaveis.Id = Guid.NewGuid();
 
-        variaveis.VDiaSemana = DiasSemana.Quarta;
-        
-        variaveis.VPonto = new Ponto { X = 10, Y = 20 };
-        
+        variaveis.VDaysWeek = DaysWeek.Wednesday;
+
+        variaveis.VPoint = new Point { X = 10, Y = 20 };
+
         variaveis.VIntNullable = null;
         variaveis.VBoolNullable = true;
         variaveis.VDateTimeNullable = DateTime.Today;
-        
-        variaveis.VDynamic = "String dinâmica";
-        
+
+        variaveis.VDynamic = "Dynamic string";
+
         Console.WriteLine($"VByte = {variaveis.VByte}");
         Console.WriteLine($"VSByte = {variaveis.VSByte}");
         Console.WriteLine($"VShort = {variaveis.VShort}");
@@ -62,30 +62,28 @@ class Program
 
         Console.WriteLine($"VChar = {variaveis.VChar}");
         Console.WriteLine($"VBool = {variaveis.VBool}");
-        
+
         Console.WriteLine($"object: {variaveis.VString}");
         Console.WriteLine($"object: {variaveis.VObjectInt}");
         Console.WriteLine($"object: {variaveis.VObjectString}");
         Console.WriteLine($"object (unboxed int): {valor}");
         Console.WriteLine($"object (unboxed string): {valor2}");
-        
+
         Console.WriteLine($"VDateTime = {variaveis.VDateTime}");
         Console.WriteLine($"VTimeSpan = {variaveis.VTimeSpan}");
         Console.WriteLine($"VGuid = {variaveis.Id}");
 
-        Console.WriteLine($"VDiaSemana = {variaveis.VDiaSemana}");
+        Console.WriteLine($"VDaysWeek = {variaveis.VDaysWeek}");
 
-        Console.WriteLine($"VPonto = {variaveis.VPonto}");
+        Console.WriteLine($"VPoint = {variaveis.VPoint}");
 
-        Console.WriteLine($"VIntNullable = {(variaveis.VIntNullable.HasValue ? variaveis.VIntNullable.Value.ToString() : "null")}");
-        Console.WriteLine($"VBoolNullable = {(variaveis.VBoolNullable.HasValue ? variaveis.VBoolNullable.Value.ToString() : "null")}");
-        Console.WriteLine($"VDateTimeNullable = {(variaveis.VDateTimeNullable.HasValue ? variaveis.VDateTimeNullable.Value.ToString() : "null")}");
+        Console.WriteLine(
+            $"VIntNullable = {(variaveis.VIntNullable.HasValue ? variaveis.VIntNullable.Value.ToString() : "null")}");
+        Console.WriteLine(
+            $"VBoolNullable = {(variaveis.VBoolNullable.HasValue ? variaveis.VBoolNullable.Value.ToString() : "null")}");
+        Console.WriteLine(
+            $"VDateTimeNullable = {(variaveis.VDateTimeNullable.HasValue ? variaveis.VDateTimeNullable.Value.ToString() : "null")}");
 
         Console.WriteLine($"VDynamic = {variaveis.VDynamic}");
-        
-        
     }
 }
-
-
-
