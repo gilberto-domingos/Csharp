@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "If-Else-Lambda", "If-Else-L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{CF8C1A5F-81C3-4AF6-AEF3-89D1FBE45E15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCase-Lambdas-Anonimous", "SwitchCase-Lambdas-Anonimous\SwitchCase-Lambdas-Anonimous.csproj", "{F2A45BCA-208A-4048-96ED-98D053255C3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{CF8C1A5F-81C3-4AF6-AEF3-89D1FBE45E15}.Release|x64.Build.0 = Release|Any CPU
 		{CF8C1A5F-81C3-4AF6-AEF3-89D1FBE45E15}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF8C1A5F-81C3-4AF6-AEF3-89D1FBE45E15}.Release|x86.Build.0 = Release|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Debug|x64.Build.0 = Debug|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Release|x64.Build.0 = Release|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2A45BCA-208A-4048-96ED-98D053255C3B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
