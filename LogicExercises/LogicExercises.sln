@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Variables", "Variables\Variables.csproj", "{676D1F60-F855-47AB-8FDB-9427309A76CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "If-Else-Lambda", "If-Else-Lambda\If-Else-Lambda.csproj", "{EF72472D-B498-4B36-BF81-6BA9403370CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "If-Else-Lambda-Anonimous", "If-Else-Lambda-Anonimous\If-Else-Lambda-Anonimous.csproj", "{EF72472D-B498-4B36-BF81-6BA9403370CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{CF8C1A5F-81C3-4AF6-AEF3-89D1FBE45E15}"
 EndProject
