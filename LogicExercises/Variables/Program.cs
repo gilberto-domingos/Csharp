@@ -1,5 +1,4 @@
-﻿using LogicExercises.Entities;
-
+﻿
 namespace LogicExercises;
 
 internal class Program

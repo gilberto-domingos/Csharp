@@ -1,4 +1,3 @@
-namespace LogicExercises.Entities;
 
 public enum DaysWeek
 {

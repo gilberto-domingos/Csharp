@@ -1,5 +1,8 @@
-namespace LogicExercises.Entities;
 
+namespace MyNamespace
+{
+    
+}
 public struct Point
 {
     public int X;

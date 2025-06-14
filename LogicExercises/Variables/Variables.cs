@@ -1,5 +1,4 @@
-namespace LogicExercises.Entities;
-
+namespace LogicExercises;
 public class Variables
 {
     //Todos os tipos de variaveis existentes no C#.
