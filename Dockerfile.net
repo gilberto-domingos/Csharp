@@ -2,31 +2,20 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copia apenas o .csproj primeiro 
-COPY ["csharp/ApiRestFull/SistemaVendas/SistemaVendas.csproj", "SistemaVendas/"]
+COPY ApiRest/ApiRestFull/ApiRestFull.csproj ApiRestFull/
+RUN dotnet restore "ApiRestFull/ApiRestFull.csproj"
 
-# Restaura dependências
-RUN dotnet restore "SistemaVendas/SistemaVendas.csproj"
+COPY ApiRest/ApiRestFull/ ApiRestFull/
+WORKDIR /src/ApiRestFull
+RUN dotnet build "ApiRestFull.csproj" -c Release -o /app/build
 
-# Copia tudo
-COPY . .
-
-# Build do projeto
-WORKDIR /src/csharp/ApiRestFull/SistemaVendas
-RUN dotnet build -c Release -o /app/build
-RUN dotnet publish -c Release -o /app/publish
+# Etapa de publish
+FROM build AS publish
+RUN dotnet publish "ApiRestFull.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Etapa final
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
-
-# Copia os arquivos publicados
-COPY --from=build /app/publish .
-
-# Copia também o código-fonte para /src
-COPY --from=build /src /src
-
-EXPOSE 5000
-
-ENTRYPOINT ["dotnet", "SistemaVendas.dll"]
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "ApiRestFull.dll"]
 

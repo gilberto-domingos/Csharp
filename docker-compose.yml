@@ -21,8 +21,8 @@ services:
   cs.react:
     container_name: cs.react
     build:
-      context: ./react
-      dockerfile: ../Dockerfile.react
+      context: .
+      dockerfile: Dockerfile.react
     ports:
       - "3000:3000"
     depends_on:
@@ -65,7 +65,7 @@ services:
     image: mcr.microsoft.com/dotnet/sdk:9.0
     volumes:
       - .:/src
-    working_dir: /src/csharp/ApiRestFull/SistemaVendas
+    working_dir: /src/CS/ApiRest/ApiRestFull
     command: tail -f /dev/null
     networks:
       - app_network
@@ -78,4 +78,3 @@ networks:
 
 volumes:
   sql_data:
-
