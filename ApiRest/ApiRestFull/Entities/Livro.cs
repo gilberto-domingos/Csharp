@@ -7,31 +7,46 @@ public class Livro
     [Key]
     public Guid IdLivro { get; init; }
 
-    public required string Titulo { get; set; }
+    public required string Titulo { get; set; } = string.Empty;
 
     public Guid IdAutor { get; init; }
 
     public required Autor Autor { get; set; }
 
-
-    public Livro() { }
-
+    public Livro() 
+    {
+        IdLivro = Guid.NewGuid();
+    }
 
     public Livro(string titulo, Guid idAutor, Autor autor)
     {
+        if (string.IsNullOrWhiteSpace(titulo))
+            throw new ArgumentException("Título é obrigatório.", nameof(titulo));
+
+        if (autor is null)
+            throw new ArgumentNullException(nameof(autor), "Autor é obrigatório.");
+
         IdLivro = Guid.NewGuid();
-        Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo), "Todos os livros devem ter título!");
+        Titulo = titulo;
         IdAutor = idAutor;
-        Autor = autor ?? throw new ArgumentNullException(nameof(autor));
+        Autor = autor;
     }
 
-    //Const.extra para testes automatizados, testes unitários, mocks ou imports com ID definido
+    // Construtor para testes ou importação com id definido
     public Livro(Guid idLivro, string titulo, Guid idAutor, Autor autor)
     {
-        IdLivro = idLivro;
-        Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo));
-        IdAutor = idAutor;
-        Autor = autor ?? throw new ArgumentNullException(nameof(autor));
-    }
+        if (idLivro == Guid.Empty)
+            throw new ArgumentException("IdLivro não pode ser vazio.", nameof(idLivro));
 
+        if (string.IsNullOrWhiteSpace(titulo))
+            throw new ArgumentException("Título é obrigatório.", nameof(titulo));
+
+        if (autor is null)
+            throw new ArgumentNullException(nameof(autor), "Autor é obrigatório.");
+
+        IdLivro = idLivro;
+        Titulo = titulo;
+        IdAutor = idAutor;
+        Autor = autor;
+    }
 }
