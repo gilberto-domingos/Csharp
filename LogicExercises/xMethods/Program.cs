@@ -4,6 +4,13 @@ internal class Program
 {
     public static void Main(string[] args)
     {
+        var book1 = new Book("O saci","Monteiro Lobato",1921 );
+        book1.ShowInformation();
+
+        var book2 = new Book("Memorias da Emilia", "Monteiro Lobato", 1936);
+        book2.ShowInformation();
+      
+        
         var calcc = new Potenciador();
 
         Console.WriteLine("Digite a base (número inteiro):");
@@ -22,6 +29,7 @@ internal class Program
             Console.WriteLine("Erro: Entrada inválida. Use números inteiros e expoente ≥ 0.");
         }
 
+        
         var calc = new FatorialCalculator();
 
         Console.WriteLine("\nDigite um número inteiro para calcular o fatorial:");
@@ -68,6 +76,7 @@ internal class Program
             Console.WriteLine("Erro: Entrada inválida, digite um número inteiro.");
         }
 
+        
         var comparer = new Comparer();
 
         Console.WriteLine("\nDigite o primeiro número:");
@@ -105,6 +114,6 @@ internal class Program
         else
         {
             Console.WriteLine("Entrada numérica inválida - 0.0");
-        }
+        } 
     }
 }
