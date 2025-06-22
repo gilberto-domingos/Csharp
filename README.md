@@ -1,3 +1,5 @@
+# Repositório para estudos, dúvidas, práticas ou testes
+
 ## Back-end => C# .Net 
 - Dotnet version 9.0.202 - .NETCore.App 9.0.3 - AspNetCore.App 9.0.3 
 ---
