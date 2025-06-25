@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xMethods", "xMethods\xMetho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCase", "SwitchCase\SwitchCase.csproj", "{53B23CD6-50FD-444C-A74E-935C6BCB3552}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesEncap", "PropertiesEncap\PropertiesEncap.csproj", "{718A2104-C21D-4F48-BD2A-C28C63C771AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,18 @@ Global
 		{53B23CD6-50FD-444C-A74E-935C6BCB3552}.Release|x64.Build.0 = Release|Any CPU
 		{53B23CD6-50FD-444C-A74E-935C6BCB3552}.Release|x86.ActiveCfg = Release|Any CPU
 		{53B23CD6-50FD-444C-A74E-935C6BCB3552}.Release|x86.Build.0 = Release|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Debug|x64.Build.0 = Debug|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Debug|x86.Build.0 = Debug|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Release|x64.ActiveCfg = Release|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Release|x64.Build.0 = Release|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Release|x86.ActiveCfg = Release|Any CPU
+		{718A2104-C21D-4F48-BD2A-C28C63C771AA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
