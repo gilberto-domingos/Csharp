@@ -1,4 +1,4 @@
-namespace HerancaServicos;
+namespace ServicosHeranca;
 
 internal class ProductPromotional : Product
 {

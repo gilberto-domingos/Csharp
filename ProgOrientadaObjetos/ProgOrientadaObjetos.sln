@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstracao", "Abstracao\Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{A8039B99-E783-4E2D-967F-C5BA76D267A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerancaServicos", "HerancaServicos\HerancaServicos.csproj", "{8D1AE534-7575-4691-A5FF-1EA7FB8DCA31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicosHeranca", "ServicosHeranca\ServicosHeranca.csproj", "{8D1AE534-7575-4691-A5FF-1EA7FB8DCA31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿using HerancaServicos;
+﻿using ServicosHeranca;
 
 class Program
 {
