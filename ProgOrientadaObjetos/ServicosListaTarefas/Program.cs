@@ -49,7 +49,7 @@ class Program
                     if (int.TryParse(Console.ReadLine(), out int numero))
                     {
                         var sucesso = tarefaService.MarcarComoConcluida(numero - 1);
-                        Console.WriteLine(sucesso
+                        Console.WriteLine(sucesso 
                             ? "Tarefa marcada como concluída com sucesso!"
                             : "Índice inválido. Nenhuma tarefa foi marcada.");
                     }
