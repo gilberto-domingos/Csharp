@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicosHeranca", "ServicosHeranca\ServicosHeranca.csproj", "{8D1AE534-7575-4691-A5FF-1EA7FB8DCA31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicosListaTarefas", "ServicosListaTarefas\ServicosListaTarefas.csproj", "{E3074768-35F2-4369-8788-638638A67669}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -178,6 +180,18 @@ Global
 		{8D1AE534-7575-4691-A5FF-1EA7FB8DCA31}.Release|x64.Build.0 = Release|Any CPU
 		{8D1AE534-7575-4691-A5FF-1EA7FB8DCA31}.Release|x86.ActiveCfg = Release|Any CPU
 		{8D1AE534-7575-4691-A5FF-1EA7FB8DCA31}.Release|x86.Build.0 = Release|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Debug|x64.Build.0 = Debug|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Debug|x86.Build.0 = Debug|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Release|x64.ActiveCfg = Release|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Release|x64.Build.0 = Release|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Release|x86.ActiveCfg = Release|Any CPU
+		{E3074768-35F2-4369-8788-638638A67669}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
