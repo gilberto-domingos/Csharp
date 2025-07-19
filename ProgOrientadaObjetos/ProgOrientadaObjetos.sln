@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicosListaTarefas", "Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicosAgendaContatos", "ServicosAgendaContatos\ServicosAgendaContatos.csproj", "{8A9E8A87-1953-4505-87ED-B91E053C8C96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicosListaCRUD", "ServicosListaCRUD\ServicosListaCRUD.csproj", "{A043C86E-7E90-41F7-B3DE-A5B808F9C930}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -206,6 +208,18 @@ Global
 		{8A9E8A87-1953-4505-87ED-B91E053C8C96}.Release|x64.Build.0 = Release|Any CPU
 		{8A9E8A87-1953-4505-87ED-B91E053C8C96}.Release|x86.ActiveCfg = Release|Any CPU
 		{8A9E8A87-1953-4505-87ED-B91E053C8C96}.Release|x86.Build.0 = Release|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Debug|x64.Build.0 = Debug|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Debug|x86.Build.0 = Debug|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Release|x64.ActiveCfg = Release|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Release|x64.Build.0 = Release|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Release|x86.ActiveCfg = Release|Any CPU
+		{A043C86E-7E90-41F7-B3DE-A5B808F9C930}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
