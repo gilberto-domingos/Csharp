@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ.Palindrome", "LINQ.Pal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayRangeSpread", "ArrayRangeSpread\ArrayRangeSpread.csproj", "{ED1918EB-711F-4A37-A11C-3A2DC60746B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{54FE6581-2A10-400D-8111-13103E004801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,18 @@ Global
 		{ED1918EB-711F-4A37-A11C-3A2DC60746B0}.Release|x64.Build.0 = Release|Any CPU
 		{ED1918EB-711F-4A37-A11C-3A2DC60746B0}.Release|x86.ActiveCfg = Release|Any CPU
 		{ED1918EB-711F-4A37-A11C-3A2DC60746B0}.Release|x86.Build.0 = Release|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Debug|x64.Build.0 = Debug|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Debug|x86.Build.0 = Debug|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Release|x64.ActiveCfg = Release|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Release|x64.Build.0 = Release|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Release|x86.ActiveCfg = Release|Any CPU
+		{54FE6581-2A10-400D-8111-13103E004801}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
