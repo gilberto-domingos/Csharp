@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintNumbers", "PrintNumber
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvenNumbers", "EvenNumbers\EvenNumbers.csproj", "{00E86D04-4BD0-4786-8E04-BC07065A7C9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AreEvenOdd", "AreEvenOdd\AreEvenOdd.csproj", "{3178AA93-F8F7-4D03-9908-20578DDB6995}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,18 @@ Global
 		{00E86D04-4BD0-4786-8E04-BC07065A7C9A}.Release|x64.Build.0 = Release|Any CPU
 		{00E86D04-4BD0-4786-8E04-BC07065A7C9A}.Release|x86.ActiveCfg = Release|Any CPU
 		{00E86D04-4BD0-4786-8E04-BC07065A7C9A}.Release|x86.Build.0 = Release|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Debug|x64.Build.0 = Debug|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Debug|x86.Build.0 = Debug|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Release|x64.ActiveCfg = Release|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Release|x64.Build.0 = Release|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Release|x86.ActiveCfg = Release|Any CPU
+		{3178AA93-F8F7-4D03-9908-20578DDB6995}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,5 +260,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{900173BE-E18C-4F0A-80D4-0E82F2EF5FA7} = {4BEDD9F1-9D6F-4066-BA75-A5F29646569B}
 		{00E86D04-4BD0-4786-8E04-BC07065A7C9A} = {4BEDD9F1-9D6F-4066-BA75-A5F29646569B}
+		{3178AA93-F8F7-4D03-9908-20578DDB6995} = {4BEDD9F1-9D6F-4066-BA75-A5F29646569B}
 	EndGlobalSection
 EndGlobal
