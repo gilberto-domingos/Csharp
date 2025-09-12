@@ -16,7 +16,17 @@ class SolvingProblem
         do
         {
             Console.WriteLine("Digite o numero e pressione enter");
-            numberx = int.Parse(Console.ReadLine());
+
+            try
+            {
+                numberx = int.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("Entrada inválida !", e);
+            }
+            
+            
 
             if (numberx != -1)
             {

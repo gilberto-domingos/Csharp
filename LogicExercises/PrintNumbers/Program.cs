@@ -5,9 +5,7 @@ class SolveProblem
     public void printNumbers()
     {
         for (int i = 1; i <= 50; i++)
-        {
-            Console.WriteLine($"Número:{i}");
-        }
+             Console.WriteLine($"Número:{i}");
     }
 }
 
